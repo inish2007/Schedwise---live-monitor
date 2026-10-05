@@ -51,9 +51,25 @@ if command -v gtk-update-icon-cache >/dev/null 2>&1; then
   gtk-update-icon-cache -f -t "$HOME/.local/share/icons/hicolor" 2>/dev/null || true
 fi
 
+# 7. Pin to GNOME Favorites / Dock
+if command -v gsettings >/dev/null 2>&1; then
+  python3 -c "
+import subprocess, ast
+try:
+    res = subprocess.check_output(['gsettings', 'get', 'org.gnome.shell', 'favorite-apps']).decode().strip()
+    favs = ast.literal_eval(res)
+    if 'schedwise.desktop' not in favs:
+        favs.append('schedwise.desktop')
+        val_str = str(favs).replace('\"', '\'')
+        subprocess.check_call(['gsettings', 'set', 'org.gnome.shell', 'favorite-apps', val_str])
+        print('✔ Automatically pinned SchedWise to GNOME Dock / Favorites')
+    else:
+        print('✔ SchedWise is already pinned to GNOME Favorites')
+except Exception:
+    pass
+" 2>/dev/null || true
+fi
+
 echo ""
-echo "🎉 SchedWise is successfully installed as a native Linux application!"
-echo "You can now:"
-echo "  1. Search for 'SchedWise' in your Ubuntu Dash / Application Launcher."
-echo "  2. Right-click the icon and choose 'Pin to Dash / Add to Favorites'."
-echo "  3. Launch it directly anytime from your desktop with zero terminal commands."
+echo "🎉 SchedWise is successfully installed and pinned to your dock!"
+echo "You can now click the SchedWise icon directly from your Ubuntu Dock to launch the app."

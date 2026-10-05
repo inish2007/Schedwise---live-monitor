@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SchedWise
+GenericName=CPU Allocation Advisor
+Comment=Linux CPU Contention Advisor & Kernel Telemetry Monitor
+Exec=@@PROJECT_DIR@@/scripts/launch_desktop_app.sh
+Icon=@@PROJECT_DIR@@/assets/schedwise-icon.png
+Terminal=false
+StartupNotify=true
+StartupWMClass=schedwise
+Categories=System;Monitor;
+Keywords=cpu;linux;scheduler;telemetry;nice;monitor;

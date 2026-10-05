@@ -1,0 +1,1 @@
+{"originalCpuList":"0-11","verifiedCpuList":"0-10","scope":"collector thread only; other JVM/UI activity can still contribute observer overhead"}

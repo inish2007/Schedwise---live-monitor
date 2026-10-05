@@ -1,0 +1,38 @@
+{
+  "milestone": "M4",
+  "timestamp": "2026-10-04T13:31:31Z",
+  "tests": {
+    "role_tagging": {
+      "passed": true,
+      "externalEnrolled": false,
+      "reason": "External process tagged by user. External processes are strictly read-only in v1."
+    },
+    "recommendation_engine": {
+      "passed": true,
+      "status": "ACTIVE",
+      "degradationRatio": 11.147075714680666,
+      "deadlineMisses": 43,
+      "candidateCount": 2,
+      "candidateNice5Weight": 335,
+      "candidateNice5Tradeoff": "Increases protected service CPU share from 33.3% to 60.4% (weight 1024 vs 335). Each background worker drops to 19.8% share. Modeled queue dispatch wait p95 improves to 37.99 ms.",
+      "restorationNote": "Priority reduction (increasing nice) is an unprivileged operation. Reversing the priority change (decreasing nice back to 0) requires CAP_SYS_NICE or resetting the experiment (recreating workers)."
+    },
+    "action_validation_rejections": {
+      "passed": true,
+      "unmanagedRejected": true,
+      "decreasingNiceRejected": true
+    },
+    "live_action_and_readback": {
+      "passed": true,
+      "targetPid": 61460,
+      "originalNice": 0,
+      "requestedNice": 5,
+      "observedNice": 5,
+      "procStatVerified": true,
+      "idempotencyVerified": true,
+      "auditStored": true,
+      "resetDispatched": true,
+      "cleanupVerified": true
+    }
+  }
+}

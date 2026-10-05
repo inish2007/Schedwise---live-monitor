@@ -1,0 +1,9 @@
+data/*
+!data/.gitkeep
+backend/target/
+frontend/node_modules/
+frontend/dist/
+.tools/
+*.log
+__pycache__/
+*.pyc

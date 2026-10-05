@@ -1,0 +1,837 @@
+{
+  "timestamp": "2026-10-04T15:34:57Z",
+  "targetCore": 11,
+  "confirmedNiceIncrease": 5,
+  "pairCount": 3,
+  "totalTrialsExecuted": 6,
+  "aggregateSummary": {
+    "averageAcrossTrialP95ImprovementPercent": 89.90867556865548,
+    "averageAcrossTrialLatencyRecoveryPercent": 95.16124639102827,
+    "sampleSizes": {
+      "requestsPerTrialPhase": 480,
+      "totalRequestsMeasured": 14310
+    },
+    "disclosures": [
+      "Three matched pairs demonstrate repeatable direction and magnitude on the tested logical core.",
+      "Results reflect CPU-bound hashing contention; memory-bound, network-bound, or multi-threaded workloads will exhibit different dynamics.",
+      "No universal statistical confidence is claimed; observations describe genuine Linux CFS behavior under tested conditions."
+    ]
+  },
+  "pairSummaries": [
+    {
+      "pairIndex": 1,
+      "executionOrder": [
+        "UNOPTIMIZED",
+        "OPTIMIZED"
+      ],
+      "unoptimizedExperimentId": "6ccb1302-9293-4376-beb8-34c1ad09fae0",
+      "optimizedExperimentId": "c25840c7-6a26-461f-a603-e164d4149209",
+      "baselineP95Ms": 28.043844,
+      "unoptimizedContentionP95Ms": 473.345212,
+      "optimizedAfterActionP95Ms": 50.775105,
+      "unoptimizedDeadlineMisses": 336,
+      "optimizedDeadlineMisses": 0,
+      "acrossTrialP95ImprovementPercent": 89.27313433984835,
+      "acrossTrialRecoveryPercent": 94.89530851834257,
+      "withinTrialReport": {
+        "status": "VALID",
+        "comparable": true,
+        "invalidReasons": [],
+        "hasAfterAction": true,
+        "baselineP95Ms": 28.043844,
+        "contentionP95Ms": 457.17352,
+        "afterP95Ms": 50.775105,
+        "baselineP99Ms": 34.636558,
+        "contentionP99Ms": 1251.959835,
+        "afterP99Ms": 67.327323,
+        "deadlineMissesContention": 142,
+        "deadlineMissesAfter": 0,
+        "workerHashesContention": 465624.3324390636,
+        "workerHashesAfter": 376084.07596022205,
+        "latencyP95ImprovementPercent": 88.89369073694382,
+        "latencyRecoveryPercent": 94.70293893168088,
+        "throughputTradeoffPercent": -19.23014976683155,
+        "deadlineMissReduction": 142,
+        "disclosures": [
+          "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+          "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+          "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+        ]
+      }
+    },
+    {
+      "pairIndex": 2,
+      "executionOrder": [
+        "OPTIMIZED",
+        "UNOPTIMIZED"
+      ],
+      "unoptimizedExperimentId": "d638c4fb-4f4c-4d1a-a938-39ac2bfcce86",
+      "optimizedExperimentId": "06233db7-c98b-4ec9-aea8-c607414cd0c9",
+      "baselineP95Ms": 26.115583,
+      "unoptimizedContentionP95Ms": 505.583921,
+      "optimizedAfterActionP95Ms": 54.503607,
+      "unoptimizedDeadlineMisses": 399,
+      "optimizedDeadlineMisses": 0,
+      "acrossTrialP95ImprovementPercent": 89.21967160423205,
+      "acrossTrialRecoveryPercent": 94.07927036049668,
+      "withinTrialReport": {
+        "status": "VALID",
+        "comparable": true,
+        "invalidReasons": [],
+        "hasAfterAction": true,
+        "baselineP95Ms": 26.115583,
+        "contentionP95Ms": 466.451998,
+        "afterP95Ms": 54.503607,
+        "baselineP99Ms": 31.987948,
+        "contentionP99Ms": 500.31422,
+        "afterP99Ms": 61.58633,
+        "deadlineMissesContention": 155,
+        "deadlineMissesAfter": 0,
+        "workerHashesContention": 456171.5721714045,
+        "workerHashesAfter": 368483.4413982349,
+        "latencyP95ImprovementPercent": 88.31528062186584,
+        "latencyRecoveryPercent": 93.55310552728191,
+        "throughputTradeoffPercent": -19.222620637180157,
+        "deadlineMissReduction": 155,
+        "disclosures": [
+          "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+          "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+          "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+        ]
+      }
+    },
+    {
+      "pairIndex": 3,
+      "executionOrder": [
+        "UNOPTIMIZED",
+        "OPTIMIZED"
+      ],
+      "unoptimizedExperimentId": "df493bf3-a67c-40e2-a9fb-d209076e1a02",
+      "optimizedExperimentId": "599d3e93-a1d6-4136-b000-1423f0d25c57",
+      "baselineP95Ms": 26.411921,
+      "unoptimizedContentionP95Ms": 483.135241,
+      "optimizedAfterActionP95Ms": 42.3554,
+      "unoptimizedDeadlineMisses": 385,
+      "optimizedDeadlineMisses": 0,
+      "acrossTrialP95ImprovementPercent": 91.23322076188602,
+      "acrossTrialRecoveryPercent": 96.50916029424555,
+      "withinTrialReport": {
+        "status": "VALID",
+        "comparable": true,
+        "invalidReasons": [],
+        "hasAfterAction": true,
+        "baselineP95Ms": 26.411921,
+        "contentionP95Ms": 474.118739,
+        "afterP95Ms": 42.3554,
+        "baselineP99Ms": 33.413,
+        "contentionP99Ms": 550.006707,
+        "afterP99Ms": 55.216342,
+        "deadlineMissesContention": 160,
+        "deadlineMissesAfter": 0,
+        "workerHashesContention": 471311.7562533382,
+        "workerHashesAfter": 389494.42211484665,
+        "latencyP95ImprovementPercent": 91.06649948294914,
+        "latencyRecoveryPercent": 96.4388572255337,
+        "throughputTradeoffPercent": -17.359493594832657,
+        "deadlineMissReduction": 160,
+        "disclosures": [
+          "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+          "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+          "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+        ]
+      }
+    }
+  ],
+  "individualTrials": [
+    {
+      "trialLabel": "Pair-1_UNOPTIMIZED",
+      "experimentId": "6ccb1302-9293-4376-beb8-34c1ad09fae0",
+      "configurationType": "UNOPTIMIZED",
+      "appliedAction": false,
+      "targetNice": 0,
+      "exportSizeBytes": 520053,
+      "metrics": {
+        "baseline": {
+          "scheduled": 780,
+          "success": 780,
+          "p50Ms": 23.068073,
+          "p95Ms": 29.07203,
+          "p99Ms": 33.655334,
+          "deadlineMisses": 0
+        },
+        "contention": {
+          "scheduled": 780,
+          "success": 449,
+          "p50Ms": 445.479212,
+          "p95Ms": 473.345212,
+          "p99Ms": 1398.521267,
+          "deadlineMisses": 336
+        },
+        "afterAction": {
+          "scheduled": 780,
+          "success": 446,
+          "p50Ms": 448.530533,
+          "p95Ms": 476.563038,
+          "p99Ms": 1461.866032,
+          "deadlineMisses": 343
+        },
+        "workers": {
+          "BACKGROUND_1": {
+            "contention": 300986.3625332256,
+            "afterAction": 299367.449709954
+          },
+          "BACKGROUND_2": {
+            "contention": 303085.8639409097,
+            "afterAction": 302115.39387258876
+          }
+        }
+      },
+      "comparison": {
+        "status": "VALID",
+        "comparable": true,
+        "invalidReasons": [],
+        "hasAfterAction": true,
+        "baselineP95Ms": 29.07203,
+        "contentionP95Ms": 473.345212,
+        "afterP95Ms": 476.563038,
+        "baselineP99Ms": 33.655334,
+        "contentionP99Ms": 1398.521267,
+        "afterP99Ms": 1461.866032,
+        "deadlineMissesContention": 336,
+        "deadlineMissesAfter": 343,
+        "workerHashesContention": 604072.2264741353,
+        "workerHashesAfter": 601482.8435825427,
+        "latencyP95ImprovementPercent": -0.6798053341247281,
+        "latencyRecoveryPercent": -0.7242899482508045,
+        "throughputTradeoffPercent": -0.4286545181370691,
+        "deadlineMissReduction": -7,
+        "disclosures": [
+          "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+          "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+          "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+        ]
+      },
+      "cleanup": {
+        "verified": true,
+        "children": [
+          {
+            "role": "PROTECTED_SERVICE",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 85448,
+              "startTicks": 1444755
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "LOAD_CLIENT",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 85449,
+              "startTicks": 1444782
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_1",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 85605,
+              "startTicks": 1448533
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_2",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 85606,
+              "startTicks": 1448533
+            },
+            "exitCode": 0,
+            "alive": false
+          }
+        ],
+        "checkedAtNs": 14548002237808
+      }
+    },
+    {
+      "trialLabel": "Pair-1_OPTIMIZED",
+      "experimentId": "c25840c7-6a26-461f-a603-e164d4149209",
+      "configurationType": "OPTIMIZED",
+      "appliedAction": true,
+      "targetNice": 5,
+      "exportSizeBytes": 595488,
+      "metrics": {
+        "baseline": {
+          "scheduled": 780,
+          "success": 780,
+          "p50Ms": 23.014295,
+          "p95Ms": 28.043844,
+          "p99Ms": 34.636558,
+          "deadlineMisses": 0
+        },
+        "contention": {
+          "scheduled": 780,
+          "success": 646,
+          "p50Ms": 79.695742,
+          "p95Ms": 457.17352,
+          "p99Ms": 1251.959835,
+          "deadlineMisses": 142
+        },
+        "afterAction": {
+          "scheduled": 780,
+          "success": 780,
+          "p50Ms": 37.246475,
+          "p95Ms": 50.775105,
+          "p99Ms": 67.327323,
+          "deadlineMisses": 0
+        },
+        "workers": {
+          "BACKGROUND_1": {
+            "contention": 232533.98569748152,
+            "afterAction": 187921.2995075121
+          },
+          "BACKGROUND_2": {
+            "contention": 233090.34674158206,
+            "afterAction": 188162.77645270995
+          }
+        }
+      },
+      "comparison": {
+        "status": "VALID",
+        "comparable": true,
+        "invalidReasons": [],
+        "hasAfterAction": true,
+        "baselineP95Ms": 28.043844,
+        "contentionP95Ms": 457.17352,
+        "afterP95Ms": 50.775105,
+        "baselineP99Ms": 34.636558,
+        "contentionP99Ms": 1251.959835,
+        "afterP99Ms": 67.327323,
+        "deadlineMissesContention": 142,
+        "deadlineMissesAfter": 0,
+        "workerHashesContention": 465624.3324390636,
+        "workerHashesAfter": 376084.07596022205,
+        "latencyP95ImprovementPercent": 88.89369073694382,
+        "latencyRecoveryPercent": 94.70293893168088,
+        "throughputTradeoffPercent": -19.23014976683155,
+        "deadlineMissReduction": 142,
+        "disclosures": [
+          "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+          "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+          "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+        ]
+      },
+      "cleanup": {
+        "verified": true,
+        "children": [
+          {
+            "role": "PROTECTED_SERVICE",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 85704,
+              "startTicks": 1454991
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "LOAD_CLIENT",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 85705,
+              "startTicks": 1455018
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_1",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 85799,
+              "startTicks": 1458768
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_2",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 85800,
+              "startTicks": 1458768
+            },
+            "exitCode": 0,
+            "alive": false
+          }
+        ],
+        "checkedAtNs": 14649842391529
+      }
+    },
+    {
+      "trialLabel": "Pair-2_OPTIMIZED",
+      "experimentId": "06233db7-c98b-4ec9-aea8-c607414cd0c9",
+      "configurationType": "OPTIMIZED",
+      "appliedAction": true,
+      "targetNice": 5,
+      "exportSizeBytes": 634346,
+      "metrics": {
+        "baseline": {
+          "scheduled": 810,
+          "success": 810,
+          "p50Ms": 22.701228,
+          "p95Ms": 26.115583,
+          "p99Ms": 31.987948,
+          "deadlineMisses": 0
+        },
+        "contention": {
+          "scheduled": 810,
+          "success": 662,
+          "p50Ms": 188.831604,
+          "p95Ms": 466.451998,
+          "p99Ms": 500.31422,
+          "deadlineMisses": 155
+        },
+        "afterAction": {
+          "scheduled": 810,
+          "success": 810,
+          "p50Ms": 37.706453,
+          "p95Ms": 54.503607,
+          "p99Ms": 61.58633,
+          "deadlineMisses": 0
+        },
+        "workers": {
+          "BACKGROUND_1": {
+            "contention": 228056.04573074038,
+            "afterAction": 184142.75043892648
+          },
+          "BACKGROUND_2": {
+            "contention": 228115.52644066414,
+            "afterAction": 184340.6909593084
+          }
+        }
+      },
+      "comparison": {
+        "status": "VALID",
+        "comparable": true,
+        "invalidReasons": [],
+        "hasAfterAction": true,
+        "baselineP95Ms": 26.115583,
+        "contentionP95Ms": 466.451998,
+        "afterP95Ms": 54.503607,
+        "baselineP99Ms": 31.987948,
+        "contentionP99Ms": 500.31422,
+        "afterP99Ms": 61.58633,
+        "deadlineMissesContention": 155,
+        "deadlineMissesAfter": 0,
+        "workerHashesContention": 456171.5721714045,
+        "workerHashesAfter": 368483.4413982349,
+        "latencyP95ImprovementPercent": 88.31528062186584,
+        "latencyRecoveryPercent": 93.55310552728191,
+        "throughputTradeoffPercent": -19.222620637180157,
+        "deadlineMissReduction": 155,
+        "disclosures": [
+          "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+          "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+          "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+        ]
+      },
+      "cleanup": {
+        "verified": true,
+        "children": [
+          {
+            "role": "PROTECTED_SERVICE",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86078,
+              "startTicks": 1465039
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "LOAD_CLIENT",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86079,
+              "startTicks": 1465065
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_1",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86095,
+              "startTicks": 1468816
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_2",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86096,
+              "startTicks": 1468816
+            },
+            "exitCode": 0,
+            "alive": false
+          }
+        ],
+        "checkedAtNs": 14750330223176
+      }
+    },
+    {
+      "trialLabel": "Pair-2_UNOPTIMIZED",
+      "experimentId": "d638c4fb-4f4c-4d1a-a938-39ac2bfcce86",
+      "configurationType": "UNOPTIMIZED",
+      "appliedAction": false,
+      "targetNice": 0,
+      "exportSizeBytes": 558168,
+      "metrics": {
+        "baseline": {
+          "scheduled": 810,
+          "success": 810,
+          "p50Ms": 23.04038,
+          "p95Ms": 25.019346,
+          "p99Ms": 31.773115,
+          "deadlineMisses": 0
+        },
+        "contention": {
+          "scheduled": 810,
+          "success": 439,
+          "p50Ms": 452.93608,
+          "p95Ms": 505.583921,
+          "p99Ms": 1478.820491,
+          "deadlineMisses": 399
+        },
+        "afterAction": {
+          "scheduled": 810,
+          "success": 446,
+          "p50Ms": 445.594942,
+          "p95Ms": 506.208377,
+          "p99Ms": 1435.849506,
+          "deadlineMisses": 388
+        },
+        "workers": {
+          "BACKGROUND_1": {
+            "contention": 297301.51404623856,
+            "afterAction": 301836.85444529593
+          },
+          "BACKGROUND_2": {
+            "contention": 297423.06629707746,
+            "afterAction": 301561.9032377927
+          }
+        }
+      },
+      "comparison": {
+        "status": "VALID",
+        "comparable": true,
+        "invalidReasons": [],
+        "hasAfterAction": true,
+        "baselineP95Ms": 25.019346,
+        "contentionP95Ms": 505.583921,
+        "afterP95Ms": 506.208377,
+        "baselineP99Ms": 31.773115,
+        "contentionP99Ms": 1478.820491,
+        "afterP99Ms": 1435.849506,
+        "deadlineMissesContention": 399,
+        "deadlineMissesAfter": 388,
+        "workerHashesContention": 594724.5803433161,
+        "workerHashesAfter": 603398.7576830887,
+        "latencyP95ImprovementPercent": -0.12351183929364107,
+        "latencyRecoveryPercent": -0.12994216229941818,
+        "throughputTradeoffPercent": 1.458520065668926,
+        "deadlineMissReduction": 11,
+        "disclosures": [
+          "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+          "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+          "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+        ]
+      },
+      "cleanup": {
+        "verified": true,
+        "children": [
+          {
+            "role": "PROTECTED_SERVICE",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86291,
+              "startTicks": 1475078
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "LOAD_CLIENT",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86293,
+              "startTicks": 1475106
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_1",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86450,
+              "startTicks": 1478857
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_2",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86451,
+              "startTicks": 1478857
+            },
+            "exitCode": 0,
+            "alive": false
+          }
+        ],
+        "checkedAtNs": 14851725714164
+      }
+    },
+    {
+      "trialLabel": "Pair-3_UNOPTIMIZED",
+      "experimentId": "df493bf3-a67c-40e2-a9fb-d209076e1a02",
+      "configurationType": "UNOPTIMIZED",
+      "appliedAction": false,
+      "targetNice": 0,
+      "exportSizeBytes": 557396,
+      "metrics": {
+        "baseline": {
+          "scheduled": 810,
+          "success": 810,
+          "p50Ms": 23.35355,
+          "p95Ms": 24.873656,
+          "p99Ms": 29.146366,
+          "deadlineMisses": 0
+        },
+        "contention": {
+          "scheduled": 810,
+          "success": 440,
+          "p50Ms": 449.902014,
+          "p95Ms": 483.135241,
+          "p99Ms": 1482.613457,
+          "deadlineMisses": 385
+        },
+        "afterAction": {
+          "scheduled": 810,
+          "success": 445,
+          "p50Ms": 451.894041,
+          "p95Ms": 501.184658,
+          "p99Ms": 1465.468352,
+          "deadlineMisses": 389
+        },
+        "workers": {
+          "BACKGROUND_1": {
+            "contention": 302226.3973591194,
+            "afterAction": 302715.1486758236
+          },
+          "BACKGROUND_2": {
+            "contention": 300511.6592467269,
+            "afterAction": 300740.33650218847
+          }
+        }
+      },
+      "comparison": {
+        "status": "VALID",
+        "comparable": true,
+        "invalidReasons": [],
+        "hasAfterAction": true,
+        "baselineP95Ms": 24.873656,
+        "contentionP95Ms": 483.135241,
+        "afterP95Ms": 501.184658,
+        "baselineP99Ms": 29.146366,
+        "contentionP99Ms": 1482.613457,
+        "afterP99Ms": 1465.468352,
+        "deadlineMissesContention": 385,
+        "deadlineMissesAfter": 389,
+        "workerHashesContention": 602738.0566058463,
+        "workerHashesAfter": 603455.485178012,
+        "latencyP95ImprovementPercent": -3.7358932796210587,
+        "latencyRecoveryPercent": -3.9386711849303286,
+        "throughputTradeoffPercent": 0.11902825187541362,
+        "deadlineMissReduction": -4,
+        "disclosures": [
+          "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+          "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+          "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+        ]
+      },
+      "cleanup": {
+        "verified": true,
+        "children": [
+          {
+            "role": "PROTECTED_SERVICE",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86686,
+              "startTicks": 1485313
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "LOAD_CLIENT",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86687,
+              "startTicks": 1485338
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_1",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86806,
+              "startTicks": 1489089
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_2",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 86807,
+              "startTicks": 1489089
+            },
+            "exitCode": 0,
+            "alive": false
+          }
+        ],
+        "checkedAtNs": 14953494979850
+      }
+    },
+    {
+      "trialLabel": "Pair-3_OPTIMIZED",
+      "experimentId": "599d3e93-a1d6-4136-b000-1423f0d25c57",
+      "configurationType": "OPTIMIZED",
+      "appliedAction": true,
+      "targetNice": 5,
+      "exportSizeBytes": 595755,
+      "metrics": {
+        "baseline": {
+          "scheduled": 780,
+          "success": 780,
+          "p50Ms": 23.123631,
+          "p95Ms": 26.411921,
+          "p99Ms": 33.413,
+          "deadlineMisses": 0
+        },
+        "contention": {
+          "scheduled": 780,
+          "success": 640,
+          "p50Ms": 38.637304,
+          "p95Ms": 474.118739,
+          "p99Ms": 550.006707,
+          "deadlineMisses": 160
+        },
+        "afterAction": {
+          "scheduled": 780,
+          "success": 780,
+          "p50Ms": 36.910256,
+          "p95Ms": 42.3554,
+          "p99Ms": 55.216342,
+          "deadlineMisses": 0
+        },
+        "workers": {
+          "BACKGROUND_1": {
+            "contention": 235544.19770827852,
+            "afterAction": 194676.7399194854
+          },
+          "BACKGROUND_2": {
+            "contention": 235767.55854505964,
+            "afterAction": 194817.68219536124
+          }
+        }
+      },
+      "comparison": {
+        "status": "VALID",
+        "comparable": true,
+        "invalidReasons": [],
+        "hasAfterAction": true,
+        "baselineP95Ms": 26.411921,
+        "contentionP95Ms": 474.118739,
+        "afterP95Ms": 42.3554,
+        "baselineP99Ms": 33.413,
+        "contentionP99Ms": 550.006707,
+        "afterP99Ms": 55.216342,
+        "deadlineMissesContention": 160,
+        "deadlineMissesAfter": 0,
+        "workerHashesContention": 471311.7562533382,
+        "workerHashesAfter": 389494.42211484665,
+        "latencyP95ImprovementPercent": 91.06649948294914,
+        "latencyRecoveryPercent": 96.4388572255337,
+        "throughputTradeoffPercent": -17.359493594832657,
+        "deadlineMissReduction": 160,
+        "disclosures": [
+          "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+          "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+          "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+        ]
+      },
+      "cleanup": {
+        "verified": true,
+        "children": [
+          {
+            "role": "PROTECTED_SERVICE",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 87022,
+              "startTicks": 1495551
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "LOAD_CLIENT",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 87023,
+              "startTicks": 1495576
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_1",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 87040,
+              "startTicks": 1499327
+            },
+            "exitCode": 0,
+            "alive": false
+          },
+          {
+            "role": "BACKGROUND_2",
+            "identity": {
+              "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+              "pid": 87041,
+              "startTicks": 1499327
+            },
+            "exitCode": 0,
+            "alive": false
+          }
+        ],
+        "checkedAtNs": 15055457370662
+      }
+    }
+  ]
+}

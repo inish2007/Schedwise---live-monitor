@@ -1,0 +1,1068 @@
+{
+  "id": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+  "testedAt": "2026-10-04T12:50:59Z",
+  "kind": "RECORDED",
+  "originalKind": "MEASURED",
+  "status": {
+    "id": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+    "state": "COMPLETED",
+    "phase": "FINISHED",
+    "reason": null,
+    "revision": 3725,
+    "timestamp": 1791118258450000000,
+    "originNs": 5146422415740,
+    "elapsedSeconds": 70.321327245,
+    "maxSeconds": 180,
+    "core": 11,
+    "observerCpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "observerLimitation": null,
+    "parameters": {
+      "iterations": 20000,
+      "bufferBytes": 1024,
+      "rateHz": 27,
+      "intervalNs": 37037037,
+      "workerHashBudget": 166203111,
+      "workers": 2,
+      "deadlineMs": 500,
+      "timeoutMs": 1500,
+      "maxInFlight": 8,
+      "calibrationMedianCpuNs": 21660244.5,
+      "calibrationCount": 8,
+      "warmupSeconds": 5,
+      "baselineSeconds": 30,
+      "transitionSeconds": 4,
+      "contentionSeconds": 30,
+      "frozenAtNs": 5146675957878,
+      "expectedDigest": "e05d0f741f01e728c6fe149c9ced743606c380f4fe93e54d9caffd184ef1629b"
+    },
+    "phases": [
+      {
+        "name": "WARMUP",
+        "startNs": 5147176043155,
+        "endNs": 5152176043155
+      },
+      {
+        "name": "BASELINE",
+        "startNs": 5152176043155,
+        "endNs": 5182176043155
+      },
+      {
+        "name": "TRANSITION",
+        "startNs": 5182176043155,
+        "endNs": 5186176043155
+      },
+      {
+        "name": "CONTENTION",
+        "startNs": 5186176043155,
+        "endNs": 5216176043155
+      }
+    ],
+    "summaries": {
+      "BASELINE": {
+        "scheduledCount": 810,
+        "successCount": 810,
+        "errorCount": 0,
+        "timeoutCount": 0,
+        "skippedCount": 0,
+        "missedDispatchCount": 0,
+        "deadlineMissCount": 0,
+        "p50Ms": {
+          "value": 26.67073,
+          "unit": "ms",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:BASELINE",
+          "timestamp": 1791118258370744010,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "p95Ms": {
+          "value": 37.154513,
+          "unit": "ms",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:BASELINE",
+          "timestamp": 1791118258370794366,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "dispatchDelayP95Ms": {
+          "value": 2.126083,
+          "unit": "ms",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:BASELINE",
+          "timestamp": 1791118258370855827,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "offeredRateHz": {
+          "value": 27.0,
+          "unit": "requests/s",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:BASELINE",
+          "timestamp": 1791118258370858202,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "completedRateHz": {
+          "value": 27.0,
+          "unit": "successful cohort requests/s",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:BASELINE",
+          "timestamp": 1791118258370860157,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "errorRate": {
+          "value": 0.0,
+          "unit": "fraction of scheduled",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:BASELINE",
+          "timestamp": 1791118258370864767,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "deadlineMissRate": {
+          "value": 0.0,
+          "unit": "fraction of scheduled",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:BASELINE",
+          "timestamp": 1791118258370867142,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        }
+      },
+      "CONTENTION": {
+        "scheduledCount": 810,
+        "successCount": 451,
+        "errorCount": 16,
+        "timeoutCount": 16,
+        "skippedCount": 343,
+        "missedDispatchCount": 0,
+        "deadlineMissCount": 363,
+        "p50Ms": {
+          "value": 448.139737,
+          "unit": "ms",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:CONTENTION",
+          "timestamp": 1791118258371611169,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "p95Ms": {
+          "value": 466.809847,
+          "unit": "ms",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:CONTENTION",
+          "timestamp": 1791118258371638827,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "dispatchDelayP95Ms": {
+          "value": 1.978724,
+          "unit": "ms",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:CONTENTION",
+          "timestamp": 1791118258371673189,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "offeredRateHz": {
+          "value": 27.0,
+          "unit": "requests/s",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:CONTENTION",
+          "timestamp": 1791118258371675144,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "completedRateHz": {
+          "value": 15.033333333333333,
+          "unit": "successful cohort requests/s",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:CONTENTION",
+          "timestamp": 1791118258371677030,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "errorRate": {
+          "value": 0.019753086419753086,
+          "unit": "fraction of scheduled",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:CONTENTION",
+          "timestamp": 1791118258371678986,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "deadlineMissRate": {
+          "value": 0.44814814814814813,
+          "unit": "fraction of scheduled",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:CONTENTION",
+          "timestamp": 1791118258371680941,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 30.0,
+          "availability": "AVAILABLE",
+          "reason": null
+        }
+      }
+    },
+    "workers": [
+      {
+        "role": "BACKGROUND_1",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46417,
+          "startTicks": 518419
+        },
+        "alive": false,
+        "observed": {
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46417,
+            "startTicks": 518419
+          },
+          "uid": 1000,
+          "parentPid": 46268,
+          "threads": 1,
+          "nice": 0,
+          "allowedCpus": [
+            11
+          ],
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-20652.scope",
+          "autogroup": "/autogroup-536 nice 0"
+        },
+        "lastVerifiedNs": 5216708200706,
+        "progress": {
+          "event": "worker_progress",
+          "kind": "MEASURED",
+          "monotonicNs": 5216712130021,
+          "timestamp": 1791118258338066443,
+          "hashes": 9792512,
+          "hashBudget": 166203111,
+          "cpuNs": 10807718062,
+          "elapsedNs": 32384531387,
+          "digest": "93707851297f33c8cd57c4474f8321f9109e3fd5acaaad2ea3f769226e4b3f3b"
+        },
+        "hashesPerSecond": {
+          "value": 304500.8422425831,
+          "unit": "hashes/s",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:CONTENTION",
+          "timestamp": 1791118258371716212,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 29.727865228,
+          "availability": "AVAILABLE",
+          "reason": null
+        }
+      },
+      {
+        "role": "BACKGROUND_2",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46418,
+          "startTicks": 518419
+        },
+        "alive": false,
+        "observed": {
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46418,
+            "startTicks": 518419
+          },
+          "uid": 1000,
+          "parentPid": 46268,
+          "threads": 1,
+          "nice": 0,
+          "allowedCpus": [
+            11
+          ],
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-20652.scope",
+          "autogroup": "/autogroup-536 nice 0"
+        },
+        "lastVerifiedNs": 5216708203150,
+        "progress": {
+          "event": "worker_progress",
+          "kind": "MEASURED",
+          "monotonicNs": 5216709950599,
+          "timestamp": 1791118258335887022,
+          "hashes": 9788416,
+          "hashBudget": 166203111,
+          "cpuNs": 10809149275,
+          "elapsedNs": 32389644245,
+          "digest": "495e8129937cf013251750e67842b659cf464bbb5617fbf43970d3ca1689e8db"
+        },
+        "hashesPerSecond": {
+          "value": 304355.7573667625,
+          "unit": "hashes/s",
+          "kind": "DERIVED",
+          "sourceId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d/events.jsonl:CONTENTION",
+          "timestamp": 1791118258371740028,
+          "sessionId": "7f685142-25b2-4d5b-a442-0463cf0b8c4d",
+          "windowSeconds": 29.721849451,
+          "availability": "AVAILABLE",
+          "reason": null
+        }
+      }
+    ],
+    "contentionCohortVerified": true,
+    "cleanup": {
+      "verified": true,
+      "children": [
+        {
+          "role": "PROTECTED_SERVICE",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46269,
+            "startTicks": 514642
+          },
+          "exitCode": 0,
+          "alive": false
+        },
+        {
+          "role": "LOAD_CLIENT",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46270,
+            "startTicks": 514667
+          },
+          "exitCode": 0,
+          "alive": false
+        },
+        {
+          "role": "BACKGROUND_1",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46417,
+            "startTicks": 518419
+          },
+          "exitCode": 0,
+          "alive": false
+        },
+        {
+          "role": "BACKGROUND_2",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46418,
+            "startTicks": 518419
+          },
+          "exitCode": 0,
+          "alive": false
+        }
+      ],
+      "checkedAtNs": 5216743728318
+    },
+    "requestEvidenceCount": 1864,
+    "children": [
+      {
+        "role": "PROTECTED_SERVICE",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46269,
+          "startTicks": 514642
+        },
+        "observed": {
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46269,
+            "startTicks": 514642
+          },
+          "uid": 1000,
+          "parentPid": 46268,
+          "threads": 1,
+          "nice": 0,
+          "allowedCpus": [
+            11
+          ],
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-20652.scope",
+          "autogroup": "/autogroup-536 nice 0"
+        },
+        "alive": false,
+        "lastVerifiedNs": 5216708195957
+      },
+      {
+        "role": "LOAD_CLIENT",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46270,
+          "startTicks": 514667
+        },
+        "observed": {
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46270,
+            "startTicks": 514667
+          },
+          "uid": 1000,
+          "parentPid": 46268,
+          "threads": 1,
+          "nice": 0,
+          "allowedCpus": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-20652.scope",
+          "autogroup": "/autogroup-536 nice 0"
+        },
+        "alive": false,
+        "lastVerifiedNs": 5146740807703
+      },
+      {
+        "role": "BACKGROUND_1",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46417,
+          "startTicks": 518419
+        },
+        "observed": {
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46417,
+            "startTicks": 518419
+          },
+          "uid": 1000,
+          "parentPid": 46268,
+          "threads": 1,
+          "nice": 0,
+          "allowedCpus": [
+            11
+          ],
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-20652.scope",
+          "autogroup": "/autogroup-536 nice 0"
+        },
+        "alive": false,
+        "lastVerifiedNs": 5216708200706
+      },
+      {
+        "role": "BACKGROUND_2",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46418,
+          "startTicks": 518419
+        },
+        "observed": {
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 46418,
+            "startTicks": 518419
+          },
+          "uid": 1000,
+          "parentPid": 46268,
+          "threads": 1,
+          "nice": 0,
+          "allowedCpus": [
+            11
+          ],
+          "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.chromium.Chromium-20652.scope",
+          "autogroup": "/autogroup-536 nice 0"
+        },
+        "alive": false,
+        "lastVerifiedNs": 5216708203150
+      }
+    ],
+    "javaCleanup": [
+      {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46417,
+          "startTicks": 518419
+        },
+        "role": "BACKGROUND_1",
+        "alive": false,
+        "identityMatchedBeforeFallback": false
+      },
+      {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46418,
+          "startTicks": 518419
+        },
+        "role": "BACKGROUND_2",
+        "alive": false,
+        "identityMatchedBeforeFallback": false
+      },
+      {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46269,
+          "startTicks": 514642
+        },
+        "role": "PROTECTED_SERVICE",
+        "alive": false,
+        "identityMatchedBeforeFallback": false
+      },
+      {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 46270,
+          "startTicks": 514667
+        },
+        "role": "LOAD_CLIENT",
+        "alive": false,
+        "identityMatchedBeforeFallback": false
+      }
+    ],
+    "coordinatorAlive": false,
+    "collectorAffinityRestored": true,
+    "backendSessionId": "0d98b558-4418-494f-a7c5-85bf10dd9757",
+    "finished": true,
+    "stopRequested": false,
+    "exportAvailable": true
+  },
+  "observations": [
+    {
+      "at": 1791118187969563467,
+      "state": "STARTING",
+      "phase": "STARTING",
+      "requestEvidenceCount": null,
+      "finished": false
+    },
+    {
+      "at": 1791118188975668053,
+      "state": "RUNNING",
+      "phase": "WARMUP",
+      "requestEvidenceCount": 2,
+      "finished": false
+    },
+    {
+      "at": 1791118189981617101,
+      "state": "RUNNING",
+      "phase": "WARMUP",
+      "requestEvidenceCount": 29,
+      "finished": false
+    },
+    {
+      "at": 1791118190988762264,
+      "state": "RUNNING",
+      "phase": "WARMUP",
+      "requestEvidenceCount": 57,
+      "finished": false
+    },
+    {
+      "at": 1791118191995022248,
+      "state": "RUNNING",
+      "phase": "WARMUP",
+      "requestEvidenceCount": 85,
+      "finished": false
+    },
+    {
+      "at": 1791118193001006217,
+      "state": "RUNNING",
+      "phase": "WARMUP",
+      "requestEvidenceCount": 99,
+      "finished": false
+    },
+    {
+      "at": 1791118194011791898,
+      "state": "RUNNING",
+      "phase": "WARMUP",
+      "requestEvidenceCount": 127,
+      "finished": false
+    },
+    {
+      "at": 1791118195016822244,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 154,
+      "finished": false
+    },
+    {
+      "at": 1791118196021077342,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 181,
+      "finished": false
+    },
+    {
+      "at": 1791118197025920371,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 209,
+      "finished": false
+    },
+    {
+      "at": 1791118198028782679,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 237,
+      "finished": false
+    },
+    {
+      "at": 1791118199032327483,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 265,
+      "finished": false
+    },
+    {
+      "at": 1791118200036084189,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 293,
+      "finished": false
+    },
+    {
+      "at": 1791118201041689963,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 320,
+      "finished": false
+    },
+    {
+      "at": 1791118202045970205,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 348,
+      "finished": false
+    },
+    {
+      "at": 1791118203049247584,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 376,
+      "finished": false
+    },
+    {
+      "at": 1791118204053066309,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 404,
+      "finished": false
+    },
+    {
+      "at": 1791118205056877142,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 432,
+      "finished": false
+    },
+    {
+      "at": 1791118206060149213,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 459,
+      "finished": false
+    },
+    {
+      "at": 1791118207063623896,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 487,
+      "finished": false
+    },
+    {
+      "at": 1791118208066803497,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 515,
+      "finished": false
+    },
+    {
+      "at": 1791118209070515224,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 543,
+      "finished": false
+    },
+    {
+      "at": 1791118210074637203,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 570,
+      "finished": false
+    },
+    {
+      "at": 1791118211079205334,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 597,
+      "finished": false
+    },
+    {
+      "at": 1791118212083451283,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 625,
+      "finished": false
+    },
+    {
+      "at": 1791118213087877006,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 653,
+      "finished": false
+    },
+    {
+      "at": 1791118214091260685,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 681,
+      "finished": false
+    },
+    {
+      "at": 1791118215095162033,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 709,
+      "finished": false
+    },
+    {
+      "at": 1791118216099184487,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 723,
+      "finished": false
+    },
+    {
+      "at": 1791118217102989524,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 751,
+      "finished": false
+    },
+    {
+      "at": 1791118218106145587,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 779,
+      "finished": false
+    },
+    {
+      "at": 1791118219110394400,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 807,
+      "finished": false
+    },
+    {
+      "at": 1791118220114135740,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 834,
+      "finished": false
+    },
+    {
+      "at": 1791118221117843486,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 862,
+      "finished": false
+    },
+    {
+      "at": 1791118222127960639,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 890,
+      "finished": false
+    },
+    {
+      "at": 1791118223131699814,
+      "state": "RUNNING",
+      "phase": "BASELINE",
+      "requestEvidenceCount": 918,
+      "finished": false
+    },
+    {
+      "at": 1791118224134995631,
+      "state": "RUNNING",
+      "phase": "TRANSITION",
+      "requestEvidenceCount": 946,
+      "finished": false
+    },
+    {
+      "at": 1791118225139279295,
+      "state": "RUNNING",
+      "phase": "TRANSITION",
+      "requestEvidenceCount": 974,
+      "finished": false
+    },
+    {
+      "at": 1791118226143916988,
+      "state": "RUNNING",
+      "phase": "TRANSITION",
+      "requestEvidenceCount": 1001,
+      "finished": false
+    },
+    {
+      "at": 1791118227147784743,
+      "state": "RUNNING",
+      "phase": "TRANSITION",
+      "requestEvidenceCount": 1024,
+      "finished": false
+    },
+    {
+      "at": 1791118228152017841,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1052,
+      "finished": false
+    },
+    {
+      "at": 1791118229160997546,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1080,
+      "finished": false
+    },
+    {
+      "at": 1791118230166707873,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1107,
+      "finished": false
+    },
+    {
+      "at": 1791118231171469746,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1134,
+      "finished": false
+    },
+    {
+      "at": 1791118232175926827,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1162,
+      "finished": false
+    },
+    {
+      "at": 1791118233184748410,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1189,
+      "finished": false
+    },
+    {
+      "at": 1791118234193879532,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1217,
+      "finished": false
+    },
+    {
+      "at": 1791118235202651037,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1245,
+      "finished": false
+    },
+    {
+      "at": 1791118236207488619,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1258,
+      "finished": false
+    },
+    {
+      "at": 1791118237212155017,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1287,
+      "finished": false
+    },
+    {
+      "at": 1791118238215138222,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1314,
+      "finished": false
+    },
+    {
+      "at": 1791118239218352045,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1342,
+      "finished": false
+    },
+    {
+      "at": 1791118240221454330,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1369,
+      "finished": false
+    },
+    {
+      "at": 1791118241224599428,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1396,
+      "finished": false
+    },
+    {
+      "at": 1791118242237196673,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1424,
+      "finished": false
+    },
+    {
+      "at": 1791118243240327942,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1452,
+      "finished": false
+    },
+    {
+      "at": 1791118244249222090,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1479,
+      "finished": false
+    },
+    {
+      "at": 1791118245257321576,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1506,
+      "finished": false
+    },
+    {
+      "at": 1791118246260430566,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1533,
+      "finished": false
+    },
+    {
+      "at": 1791118247263198587,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1562,
+      "finished": false
+    },
+    {
+      "at": 1791118248272766571,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1589,
+      "finished": false
+    },
+    {
+      "at": 1791118249276081526,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1617,
+      "finished": false
+    },
+    {
+      "at": 1791118250279468138,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1645,
+      "finished": false
+    },
+    {
+      "at": 1791118251282388205,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1672,
+      "finished": false
+    },
+    {
+      "at": 1791118252286151615,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1699,
+      "finished": false
+    },
+    {
+      "at": 1791118253289010501,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1727,
+      "finished": false
+    },
+    {
+      "at": 1791118254292289138,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1754,
+      "finished": false
+    },
+    {
+      "at": 1791118255295875568,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1782,
+      "finished": false
+    },
+    {
+      "at": 1791118256304333203,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1810,
+      "finished": false
+    },
+    {
+      "at": 1791118257307579503,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1837,
+      "finished": false
+    },
+    {
+      "at": 1791118258310621584,
+      "state": "RUNNING",
+      "phase": "CONTENTION",
+      "requestEvidenceCount": 1851,
+      "finished": false
+    },
+    {
+      "at": 1791118259314771151,
+      "state": "COMPLETED",
+      "phase": "FINISHED",
+      "requestEvidenceCount": 1864,
+      "finished": true
+    }
+  ],
+  "archive": "docs/evidence/m2-7f685142-25b2-4d5b-a442-0463cf0b8c4d.zip",
+  "archiveSha256": "011b6190277ce2dac32820c147e308a91b85ebdbe7d757380dd828edcc5a779b",
+  "sampleCount": 68,
+  "rawRequestCount": 1864,
+  "kernel": "7.0.0-28-generic"
+}

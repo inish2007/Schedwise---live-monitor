@@ -1,0 +1,137 @@
+{
+  "testedAt": "2026-10-04T13:11:26Z",
+  "captureId": "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+  "request": {
+    "captureId": "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+    "phase": "CONTENTION",
+    "models": [
+      "FCFS",
+      "ROUND_ROBIN",
+      "PRIORITY",
+      "SJF",
+      "CFS"
+    ],
+    "quantumNs": 20000000,
+    "cfsLatencyTargetNs": 24000000,
+    "cfsMinGranularityNs": 3000000,
+    "backgroundNice": 5,
+    "horizonNs": 15000000000,
+    "maxEvents": 20000
+  },
+  "summary": {
+    "algorithmsTested": [
+      "FCFS",
+      "ROUND_ROBIN",
+      "PRIORITY",
+      "SJF",
+      "CFS"
+    ],
+    "metrics": {
+      "FCFS": {
+        "totalJobs": 310,
+        "completedJobs": 1,
+        "censoredJobs": 309,
+        "meanResponseTimeMs": 3859.79,
+        "p50ResponseTimeMs": 0.0,
+        "p95ResponseTimeMs": 7719.58,
+        "meanWaitingTimeMs": 5235.65,
+        "p50WaitingTimeMs": 4301.83,
+        "p95WaitingTimeMs": 13847.17,
+        "meanTurnaroundTimeMs": 7719.58,
+        "p50TurnaroundTimeMs": 7719.58,
+        "p95TurnaroundTimeMs": 7719.58,
+        "cpuUtilizationPercent": 100.0,
+        "allocationShares": {
+          "BACKGROUND_1": 51.46,
+          "BACKGROUND_2": 48.54,
+          "PROTECTED_SERVICE": 0.0
+        },
+        "jainFairnessIndex": 0.666
+      },
+      "ROUND_ROBIN": {
+        "totalJobs": 310,
+        "completedJobs": 215,
+        "censoredJobs": 95,
+        "meanResponseTimeMs": 31.83,
+        "p50ResponseTimeMs": 31.77,
+        "p95ResponseTimeMs": 41.22,
+        "meanWaitingTimeMs": 114.13,
+        "p50WaitingTimeMs": 67.58,
+        "p95WaitingTimeMs": 80.88,
+        "meanTurnaroundTimeMs": 94.49,
+        "p50TurnaroundTimeMs": 93.96,
+        "p95TurnaroundTimeMs": 105.81,
+        "cpuUtilizationPercent": 100.0,
+        "allocationShares": {
+          "BACKGROUND_1": 33.87,
+          "BACKGROUND_2": 33.79,
+          "PROTECTED_SERVICE": 32.34
+        },
+        "jainFairnessIndex": 1.0
+      },
+      "PRIORITY": {
+        "totalJobs": 310,
+        "completedJobs": 165,
+        "censoredJobs": 145,
+        "meanResponseTimeMs": 3847.41,
+        "p50ResponseTimeMs": 3827.86,
+        "p95ResponseTimeMs": 7253.43,
+        "meanWaitingTimeMs": 2360.18,
+        "p50WaitingTimeMs": 1746.68,
+        "p95WaitingTimeMs": 6939.94,
+        "meanTurnaroundTimeMs": 3870.72,
+        "p50TurnaroundTimeMs": 3891.9,
+        "p95TurnaroundTimeMs": 7275.43,
+        "cpuUtilizationPercent": 100.0,
+        "allocationShares": {
+          "BACKGROUND_1": 51.46,
+          "BACKGROUND_2": 23.91,
+          "PROTECTED_SERVICE": 24.62
+        },
+        "jainFairnessIndex": 0.871
+      },
+      "SJF": {
+        "totalJobs": 310,
+        "completedJobs": 165,
+        "censoredJobs": 145,
+        "meanResponseTimeMs": 3803.21,
+        "p50ResponseTimeMs": 3841.3,
+        "p95ResponseTimeMs": 8981.41,
+        "meanWaitingTimeMs": 2336.52,
+        "p50WaitingTimeMs": 1063.61,
+        "p95WaitingTimeMs": 8472.6,
+        "meanTurnaroundTimeMs": 3826.26,
+        "p50TurnaroundTimeMs": 3867.22,
+        "p95TurnaroundTimeMs": 8945.83,
+        "cpuUtilizationPercent": 100.0,
+        "allocationShares": {
+          "BACKGROUND_1": 51.46,
+          "BACKGROUND_2": 23.91,
+          "PROTECTED_SERVICE": 24.62
+        },
+        "jainFairnessIndex": 0.871
+      },
+      "CFS": {
+        "totalJobs": 310,
+        "completedJobs": 216,
+        "censoredJobs": 94,
+        "meanResponseTimeMs": 6.23,
+        "p50ResponseTimeMs": 6.02,
+        "p95ResponseTimeMs": 11.56,
+        "meanWaitingTimeMs": 69.62,
+        "p50WaitingTimeMs": 6.06,
+        "p95WaitingTimeMs": 11.79,
+        "meanTurnaroundTimeMs": 30.48,
+        "p50TurnaroundTimeMs": 30.14,
+        "p95TurnaroundTimeMs": 38.03,
+        "cpuUtilizationPercent": 100.0,
+        "allocationShares": {
+          "BACKGROUND_1": 33.84,
+          "BACKGROUND_2": 33.81,
+          "PROTECTED_SERVICE": 32.35
+        },
+        "jainFairnessIndex": 1.0
+      }
+    }
+  }
+}

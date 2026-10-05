@@ -1,0 +1,503 @@
+{
+  "id": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+  "state": "FAILED",
+  "phase": "FINISHED",
+  "reason": "RuntimeError: finite worker ended before comparison completed",
+  "revision": 2093,
+  "timestamp": 1791120730509154643,
+  "originNs": 7650726671991,
+  "elapsedSeconds": 38.15562278,
+  "maxSeconds": 180,
+  "core": 0,
+  "observerCpus": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "observerLimitation": null,
+  "parameters": {
+    "iterations": 20000,
+    "bufferBytes": 1024,
+    "rateHz": 26,
+    "intervalNs": 38461538,
+    "workerHashBudget": 161396891,
+    "workers": 2,
+    "deadlineMs": 500,
+    "timeoutMs": 1500,
+    "maxInFlight": 8,
+    "calibrationMedianCpuNs": 22305262.5,
+    "calibrationCount": 8,
+    "warmupSeconds": 5,
+    "baselineSeconds": 30,
+    "transitionSeconds": 4,
+    "contentionSeconds": 30,
+    "frozenAtNs": 7650992734363,
+    "expectedDigest": "e05d0f741f01e728c6fe149c9ced743606c380f4fe93e54d9caffd184ef1629b"
+  },
+  "phases": [
+    {
+      "name": "WARMUP",
+      "startNs": 7651492781716,
+      "endNs": 7656492781716
+    },
+    {
+      "name": "BASELINE",
+      "startNs": 7656492781716,
+      "endNs": 7686492781716
+    },
+    {
+      "name": "TRANSITION",
+      "startNs": 7686492781716,
+      "endNs": 7690492781716
+    },
+    {
+      "name": "CONTENTION",
+      "startNs": 7690492781716,
+      "endNs": 7720492781716
+    }
+  ],
+  "summaries": {
+    "BASELINE": {
+      "scheduledCount": 780,
+      "successCount": 780,
+      "errorCount": 0,
+      "timeoutCount": 0,
+      "skippedCount": 0,
+      "missedDispatchCount": 0,
+      "deadlineMissCount": 0,
+      "p50Ms": {
+        "value": 24.155241,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:BASELINE",
+        "timestamp": 1791120730508932336,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "p95Ms": {
+        "value": 27.756708,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:BASELINE",
+        "timestamp": 1791120730509000083,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "dispatchDelayP95Ms": {
+        "value": 2.058353,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:BASELINE",
+        "timestamp": 1791120730509057772,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "offeredRateHz": {
+        "value": 26.0,
+        "unit": "requests/s",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:BASELINE",
+        "timestamp": 1791120730509059658,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "completedRateHz": {
+        "value": 26.0,
+        "unit": "successful cohort requests/s",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:BASELINE",
+        "timestamp": 1791120730509061544,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "errorRate": {
+        "value": 0.0,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:BASELINE",
+        "timestamp": 1791120730509063499,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "deadlineMissRate": {
+        "value": 0.0,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:BASELINE",
+        "timestamp": 1791120730509064966,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      }
+    },
+    "CONTENTION": {
+      "scheduledCount": 0,
+      "successCount": 0,
+      "errorCount": 0,
+      "timeoutCount": 0,
+      "skippedCount": 0,
+      "missedDispatchCount": 0,
+      "deadlineMissCount": 0,
+      "p50Ms": {
+        "value": null,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:CONTENTION",
+        "timestamp": 1791120730509130617,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "p95Ms": {
+        "value": null,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:CONTENTION",
+        "timestamp": 1791120730509132503,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "FEWER_THAN_20_SUCCESSES"
+      },
+      "dispatchDelayP95Ms": {
+        "value": null,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:CONTENTION",
+        "timestamp": 1791120730509133970,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "offeredRateHz": {
+        "value": null,
+        "unit": "requests/s",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:CONTENTION",
+        "timestamp": 1791120730509135856,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "completedRateHz": {
+        "value": null,
+        "unit": "successful cohort requests/s",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:CONTENTION",
+        "timestamp": 1791120730509136833,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "errorRate": {
+        "value": null,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:CONTENTION",
+        "timestamp": 1791120730509138719,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "deadlineMissRate": {
+        "value": null,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:CONTENTION",
+        "timestamp": 1791120730509140116,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      }
+    }
+  },
+  "workers": [
+    {
+      "role": "BACKGROUND_1",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 61460,
+        "startTicks": 768849
+      },
+      "alive": false,
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61460,
+          "startTicks": 768849
+        },
+        "uid": 1000,
+        "parentPid": 61324,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          0
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-619 nice 0"
+      },
+      "lastVerifiedNs": 7688603285944,
+      "progress": {
+        "event": "worker_progress",
+        "kind": "MEASURED",
+        "monotonicNs": 7688833125933,
+        "timestamp": 1791120730459061867,
+        "hashes": 61440,
+        "hashBudget": 161396891,
+        "cpuNs": 71042257,
+        "elapsedNs": 236228986,
+        "digest": "c2c3131387e35beccb0c8df715027d8c0e7fac51da2ac3cfc73ddd82951b1636"
+      },
+      "hashesPerSecond": {
+        "value": null,
+        "unit": "hashes/s",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:CONTENTION",
+        "timestamp": 1791120730509147589,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NEEDS_TWO_PROGRESS_EVENTS"
+      }
+    },
+    {
+      "role": "BACKGROUND_2",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 61461,
+        "startTicks": 768849
+      },
+      "alive": false,
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61461,
+          "startTicks": 768849
+        },
+        "uid": 1000,
+        "parentPid": 61324,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          0
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-619 nice 0"
+      },
+      "lastVerifiedNs": 7688603288878,
+      "progress": {
+        "event": "worker_progress",
+        "kind": "MEASURED",
+        "monotonicNs": 7688826109825,
+        "timestamp": 1791120730452045759,
+        "hashes": 66560,
+        "hashBudget": 161396891,
+        "cpuNs": 77883833,
+        "elapsedNs": 224381704,
+        "digest": "79bc1a862cf0b3f5620ff5729115a295186f7983ab6476f9b34f7a8f3d463980"
+      },
+      "hashesPerSecond": {
+        "value": null,
+        "unit": "hashes/s",
+        "kind": "DERIVED",
+        "sourceId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf/events.jsonl:CONTENTION",
+        "timestamp": 1791120730509151849,
+        "sessionId": "cc89e11a-4cfb-4dd8-bd69-edf41aa1bdbf",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NEEDS_TWO_PROGRESS_EVENTS"
+      }
+    }
+  ],
+  "contentionCohortVerified": false,
+  "cleanup": {
+    "verified": true,
+    "children": [
+      {
+        "role": "PROTECTED_SERVICE",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61326,
+          "startTicks": 765072
+        },
+        "exitCode": 0,
+        "alive": false
+      },
+      {
+        "role": "LOAD_CLIENT",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61327,
+          "startTicks": 765099
+        },
+        "exitCode": 0,
+        "alive": false
+      },
+      {
+        "role": "BACKGROUND_1",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61460,
+          "startTicks": 768849
+        },
+        "exitCode": 0,
+        "alive": false
+      },
+      {
+        "role": "BACKGROUND_2",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61461,
+          "startTicks": 768849
+        },
+        "exitCode": -15,
+        "alive": false
+      }
+    ],
+    "checkedAtNs": 7688880505491
+  },
+  "requestEvidenceCount": 971,
+  "children": [
+    {
+      "role": "PROTECTED_SERVICE",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 61326,
+        "startTicks": 765072
+      },
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61326,
+          "startTicks": 765072
+        },
+        "uid": 1000,
+        "parentPid": 61324,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          0
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-619 nice 0"
+      },
+      "alive": false,
+      "lastVerifiedNs": 7688603281195
+    },
+    {
+      "role": "LOAD_CLIENT",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 61327,
+        "startTicks": 765099
+      },
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61327,
+          "startTicks": 765099
+        },
+        "uid": 1000,
+        "parentPid": 61324,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-619 nice 0"
+      },
+      "alive": false,
+      "lastVerifiedNs": 7651081240814
+    },
+    {
+      "role": "BACKGROUND_1",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 61460,
+        "startTicks": 768849
+      },
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61460,
+          "startTicks": 768849
+        },
+        "uid": 1000,
+        "parentPid": 61324,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          0
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-619 nice 0"
+      },
+      "alive": false,
+      "lastVerifiedNs": 7688603285944
+    },
+    {
+      "role": "BACKGROUND_2",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 61461,
+        "startTicks": 768849
+      },
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 61461,
+          "startTicks": 768849
+        },
+        "uid": 1000,
+        "parentPid": 61324,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          0
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-619 nice 0"
+      },
+      "alive": false,
+      "lastVerifiedNs": 7688603288878
+    }
+  ]
+}

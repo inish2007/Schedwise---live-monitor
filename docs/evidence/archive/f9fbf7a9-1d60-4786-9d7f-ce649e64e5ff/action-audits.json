@@ -1,0 +1,39 @@
+[ {
+  "id" : "6693f71c-d352-42a9-8570-3b35e7e9b912",
+  "sessionId" : "ef77ec9c-e8f6-4df5-a1dd-1058b953b464",
+  "experimentId" : "f9fbf7a9-1d60-4786-9d7f-ce649e64e5ff",
+  "recommendationId" : null,
+  "actionType" : "RENICE",
+  "targetPid" : 79827,
+  "targetRole" : "BACKGROUND_2",
+  "targetIdentity" : {
+    "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+    "pid" : 79827,
+    "startTicks" : 1319641
+  },
+  "originalNice" : 0,
+  "requestedNice" : 5,
+  "observedNice" : 5,
+  "status" : "SUCCESS",
+  "reason" : null,
+  "createdAt" : "2026-10-04T15:04:12.993460825Z"
+}, {
+  "id" : "6693f71c-d352-42a9-8570-3b35e7e9b912",
+  "sessionId" : "ef77ec9c-e8f6-4df5-a1dd-1058b953b464",
+  "experimentId" : "f9fbf7a9-1d60-4786-9d7f-ce649e64e5ff",
+  "recommendationId" : null,
+  "actionType" : "RENICE",
+  "targetPid" : 79826,
+  "targetRole" : "BACKGROUND_1",
+  "targetIdentity" : {
+    "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+    "pid" : 79826,
+    "startTicks" : 1319640
+  },
+  "originalNice" : 0,
+  "requestedNice" : 5,
+  "observedNice" : 5,
+  "status" : "SUCCESS",
+  "reason" : null,
+  "createdAt" : "2026-10-04T15:04:12.993460825Z"
+} ]

@@ -1,0 +1,490 @@
+{
+  "id" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+  "state" : "CANCELLED",
+  "phase" : "FINISHED",
+  "reason" : "stop requested or parent exited",
+  "revision" : 2211,
+  "timestamp" : 1791118832633000000,
+  "originNs" : 5729597183400,
+  "elapsedSeconds" : 61.268783783,
+  "maxSeconds" : 180,
+  "core" : 11,
+  "observerCpus" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
+  "observerLimitation" : null,
+  "parameters" : {
+    "iterations" : 20000,
+    "bufferBytes" : 1024,
+    "rateHz" : 16,
+    "intervalNs" : 62500000,
+    "workerHashBudget" : 97934998,
+    "workers" : 2,
+    "deadlineMs" : 500,
+    "timeoutMs" : 1500,
+    "maxInFlight" : 8,
+    "calibrationMedianCpuNs" : 3.6759076E7,
+    "calibrationCount" : 8,
+    "warmupSeconds" : 5,
+    "baselineSeconds" : 30,
+    "transitionSeconds" : 4,
+    "contentionSeconds" : 30,
+    "frozenAtNs" : 5730018657872,
+    "expectedDigest" : "e05d0f741f01e728c6fe149c9ced743606c380f4fe93e54d9caffd184ef1629b"
+  },
+  "phases" : [ {
+    "name" : "WARMUP",
+    "startNs" : 5730518732673,
+    "endNs" : 5735518732673
+  }, {
+    "name" : "BASELINE",
+    "startNs" : 5735518732673,
+    "endNs" : 5765518732673
+  }, {
+    "name" : "TRANSITION",
+    "startNs" : 5765518732673,
+    "endNs" : 5769518732673
+  }, {
+    "name" : "CONTENTION",
+    "startNs" : 5769518732673,
+    "endNs" : 5799518732673
+  } ],
+  "summaries" : {
+    "BASELINE" : {
+      "scheduledCount" : 480,
+      "successCount" : 480,
+      "errorCount" : 0,
+      "timeoutCount" : 0,
+      "skippedCount" : 0,
+      "missedDispatchCount" : 0,
+      "deadlineMissCount" : 0,
+      "p50Ms" : {
+        "value" : 37.71524,
+        "unit" : "ms",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:BASELINE",
+        "timestamp" : 1791118832492872941,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 30.0,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "p95Ms" : {
+        "value" : 44.038025,
+        "unit" : "ms",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:BASELINE",
+        "timestamp" : 1791118832492960593,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 30.0,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "dispatchDelayP95Ms" : {
+        "value" : 1.723484,
+        "unit" : "ms",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:BASELINE",
+        "timestamp" : 1791118832493040701,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 30.0,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "offeredRateHz" : {
+        "value" : 16.0,
+        "unit" : "requests/s",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:BASELINE",
+        "timestamp" : 1791118832493043984,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 30.0,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "completedRateHz" : {
+        "value" : 16.0,
+        "unit" : "successful cohort requests/s",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:BASELINE",
+        "timestamp" : 1791118832493047336,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 30.0,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "errorRate" : {
+        "value" : 0.0,
+        "unit" : "fraction of scheduled",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:BASELINE",
+        "timestamp" : 1791118832493049781,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 30.0,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "deadlineMissRate" : {
+        "value" : 0.0,
+        "unit" : "fraction of scheduled",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:BASELINE",
+        "timestamp" : 1791118832493052644,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 30.0,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      }
+    },
+    "CONTENTION" : {
+      "scheduledCount" : 341,
+      "successCount" : 306,
+      "errorCount" : 16,
+      "timeoutCount" : 9,
+      "skippedCount" : 19,
+      "missedDispatchCount" : 0,
+      "deadlineMissCount" : 43,
+      "p50Ms" : {
+        "value" : 442.87514,
+        "unit" : "ms",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:CONTENTION",
+        "timestamp" : 1791118832493639875,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 21.34723451,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "p95Ms" : {
+        "value" : 490.895199,
+        "unit" : "ms",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:CONTENTION",
+        "timestamp" : 1791118832493673748,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 21.34723451,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "dispatchDelayP95Ms" : {
+        "value" : 1.807483,
+        "unit" : "ms",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:CONTENTION",
+        "timestamp" : 1791118832493722707,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 21.34723451,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "offeredRateHz" : {
+        "value" : 15.973966081660851,
+        "unit" : "requests/s",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:CONTENTION",
+        "timestamp" : 1791118832493725082,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 21.34723451,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "completedRateHz" : {
+        "value" : 14.334409445713257,
+        "unit" : "successful cohort requests/s",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:CONTENTION",
+        "timestamp" : 1791118832493728434,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 21.34723451,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "errorRate" : {
+        "value" : 0.0469208211143695,
+        "unit" : "fraction of scheduled",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:CONTENTION",
+        "timestamp" : 1791118832493730390,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 21.34723451,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      },
+      "deadlineMissRate" : {
+        "value" : 0.12609970674486803,
+        "unit" : "fraction of scheduled",
+        "kind" : "DERIVED",
+        "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:CONTENTION",
+        "timestamp" : 1791118832493732764,
+        "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+        "windowSeconds" : 21.34723451,
+        "availability" : "AVAILABLE",
+        "reason" : null
+      }
+    }
+  },
+  "workers" : [ {
+    "role" : "BACKGROUND_1",
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 50095,
+      "startTicks" : 576752
+    },
+    "alive" : false,
+    "observed" : {
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 50095,
+        "startTicks" : 576752
+      },
+      "uid" : 1000,
+      "parentPid" : 49859,
+      "threads" : 1,
+      "nice" : 0,
+      "allowedCpus" : [ 11 ],
+      "cgroup" : "0::/user.slice/user-1000.slice/user@1000.service/app.slice/kitty-43739-0.scope",
+      "autogroup" : "/autogroup-557 nice 0"
+    },
+    "lastVerifiedNs" : 5790792217727,
+    "progress" : {
+      "event" : "worker_progress",
+      "kind" : "MEASURED",
+      "monotonicNs" : 5790796188656,
+      "timestamp" : 1791118832422124101,
+      "hashes" : 6764544,
+      "hashBudget" : 97934998,
+      "cpuNs" : 7719579742,
+      "elapsedNs" : 23161839608,
+      "digest" : "bcc4174bf1cf95f882d9b87d59a895159d9b665d513d8b2ce34cfba9dd328f5e"
+    },
+    "hashesPerSecond" : {
+      "value" : 291562.8558813848,
+      "unit" : "hashes/s",
+      "kind" : "DERIVED",
+      "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:CONTENTION",
+      "timestamp" : 1791118832493794574,
+      "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+      "windowSeconds" : 21.149909447,
+      "availability" : "AVAILABLE",
+      "reason" : null
+    }
+  }, {
+    "role" : "BACKGROUND_2",
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 50096,
+      "startTicks" : 576752
+    },
+    "alive" : false,
+    "observed" : {
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 50096,
+        "startTicks" : 576752
+      },
+      "uid" : 1000,
+      "parentPid" : 49859,
+      "threads" : 1,
+      "nice" : 0,
+      "allowedCpus" : [ 11 ],
+      "cgroup" : "0::/user.slice/user-1000.slice/user@1000.service/app.slice/kitty-43739-0.scope",
+      "autogroup" : "/autogroup-557 nice 0"
+    },
+    "lastVerifiedNs" : 5790792223384,
+    "progress" : {
+      "event" : "worker_progress",
+      "kind" : "MEASURED",
+      "monotonicNs" : 5790794228754,
+      "timestamp" : 1791118832420165177,
+      "hashes" : 6818816,
+      "hashBudget" : 97934998,
+      "cpuNs" : 7720611901,
+      "elapsedNs" : 23163411330,
+      "digest" : "b00e711b3194fbec68a0e782736f71d2607089a95b3373841ab97296cdedbd30"
+    },
+    "hashesPerSecond" : {
+      "value" : 293809.2657355545,
+      "unit" : "hashes/s",
+      "kind" : "DERIVED",
+      "sourceId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285/events.jsonl:CONTENTION",
+      "timestamp" : 1791118832493828378,
+      "sessionId" : "81cbdb4b-088c-44fd-9d26-3a5b00435285",
+      "windowSeconds" : 21.145037698,
+      "availability" : "AVAILABLE",
+      "reason" : null
+    }
+  } ],
+  "contentionCohortVerified" : true,
+  "cleanup" : {
+    "verified" : true,
+    "children" : [ {
+      "role" : "PROTECTED_SERVICE",
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 49861,
+        "startTicks" : 572959
+      },
+      "exitCode" : 0,
+      "alive" : false
+    }, {
+      "role" : "LOAD_CLIENT",
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 49862,
+        "startTicks" : 573001
+      },
+      "exitCode" : 0,
+      "alive" : false
+    }, {
+      "role" : "BACKGROUND_1",
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 50095,
+        "startTicks" : 576752
+      },
+      "exitCode" : 0,
+      "alive" : false
+    }, {
+      "role" : "BACKGROUND_2",
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 50096,
+        "startTicks" : 576752
+      },
+      "exitCode" : 0,
+      "alive" : false
+    } ],
+    "checkedAtNs" : 5790865948675
+  },
+  "requestEvidenceCount" : 965,
+  "children" : [ {
+    "role" : "PROTECTED_SERVICE",
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 49861,
+      "startTicks" : 572959
+    },
+    "observed" : {
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 49861,
+        "startTicks" : 572959
+      },
+      "uid" : 1000,
+      "parentPid" : 49859,
+      "threads" : 1,
+      "nice" : 0,
+      "allowedCpus" : [ 11 ],
+      "cgroup" : "0::/user.slice/user-1000.slice/user@1000.service/app.slice/kitty-43739-0.scope",
+      "autogroup" : "/autogroup-557 nice 0"
+    },
+    "alive" : false,
+    "lastVerifiedNs" : 5790792211162
+  }, {
+    "role" : "LOAD_CLIENT",
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 49862,
+      "startTicks" : 573001
+    },
+    "observed" : {
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 49862,
+        "startTicks" : 573001
+      },
+      "uid" : 1000,
+      "parentPid" : 49859,
+      "threads" : 1,
+      "nice" : 0,
+      "allowedCpus" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
+      "cgroup" : "0::/user.slice/user-1000.slice/user@1000.service/app.slice/kitty-43739-0.scope",
+      "autogroup" : "/autogroup-557 nice 0"
+    },
+    "alive" : false,
+    "lastVerifiedNs" : 5730151659148
+  }, {
+    "role" : "BACKGROUND_1",
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 50095,
+      "startTicks" : 576752
+    },
+    "observed" : {
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 50095,
+        "startTicks" : 576752
+      },
+      "uid" : 1000,
+      "parentPid" : 49859,
+      "threads" : 1,
+      "nice" : 0,
+      "allowedCpus" : [ 11 ],
+      "cgroup" : "0::/user.slice/user-1000.slice/user@1000.service/app.slice/kitty-43739-0.scope",
+      "autogroup" : "/autogroup-557 nice 0"
+    },
+    "alive" : false,
+    "lastVerifiedNs" : 5790792217727
+  }, {
+    "role" : "BACKGROUND_2",
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 50096,
+      "startTicks" : 576752
+    },
+    "observed" : {
+      "identity" : {
+        "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid" : 50096,
+        "startTicks" : 576752
+      },
+      "uid" : 1000,
+      "parentPid" : 49859,
+      "threads" : 1,
+      "nice" : 0,
+      "allowedCpus" : [ 11 ],
+      "cgroup" : "0::/user.slice/user-1000.slice/user@1000.service/app.slice/kitty-43739-0.scope",
+      "autogroup" : "/autogroup-557 nice 0"
+    },
+    "alive" : false,
+    "lastVerifiedNs" : 5790792223384
+  } ],
+  "javaCleanup" : [ {
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 50096,
+      "startTicks" : 576752
+    },
+    "role" : "BACKGROUND_2",
+    "alive" : false,
+    "identityMatchedBeforeFallback" : false
+  }, {
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 49861,
+      "startTicks" : 572959
+    },
+    "role" : "PROTECTED_SERVICE",
+    "alive" : false,
+    "identityMatchedBeforeFallback" : false
+  }, {
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 49862,
+      "startTicks" : 573001
+    },
+    "role" : "LOAD_CLIENT",
+    "alive" : false,
+    "identityMatchedBeforeFallback" : false
+  }, {
+    "identity" : {
+      "bootId" : "14a10379-e28c-41a3-b407-666eddbe99c4",
+      "pid" : 50095,
+      "startTicks" : 576752
+    },
+    "role" : "BACKGROUND_1",
+    "alive" : false,
+    "identityMatchedBeforeFallback" : false
+  } ],
+  "coordinatorAlive" : false,
+  "collectorAffinityRestored" : true
+}

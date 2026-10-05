@@ -1,0 +1,676 @@
+{
+  "id": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+  "state": "CANCELLED",
+  "phase": "FINISHED",
+  "reason": "stop requested or parent exited",
+  "revision": 2849,
+  "timestamp": 1791125465586555416,
+  "originNs": 12371855071440,
+  "elapsedSeconds": 52.102545273,
+  "maxSeconds": 180,
+  "core": 11,
+  "observerCpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "observerLimitation": null,
+  "parameters": {
+    "iterations": 20000,
+    "bufferBytes": 1024,
+    "rateHz": 27,
+    "intervalNs": 37037037,
+    "workerHashBudget": 164670288,
+    "workers": 2,
+    "deadlineMs": 500,
+    "timeoutMs": 1500,
+    "maxInFlight": 8,
+    "calibrationMedianCpuNs": 21861867.5,
+    "calibrationCount": 8,
+    "warmupSeconds": 5,
+    "baselineSeconds": 30,
+    "transitionSeconds": 4,
+    "contentionSeconds": 30,
+    "afterActionSeconds": 30,
+    "frozenAtNs": 12372114199337,
+    "expectedDigest": "e05d0f741f01e728c6fe149c9ced743606c380f4fe93e54d9caffd184ef1629b"
+  },
+  "phases": [
+    {
+      "name": "WARMUP",
+      "startNs": 12372614253464,
+      "endNs": 12377614253464
+    },
+    {
+      "name": "BASELINE",
+      "startNs": 12377614253464,
+      "endNs": 12407614253464
+    },
+    {
+      "name": "TRANSITION",
+      "startNs": 12407614253464,
+      "endNs": 12411614253464
+    },
+    {
+      "name": "CONTENTION",
+      "startNs": 12411614253464,
+      "endNs": 12441614253464
+    },
+    {
+      "name": "AFTER_ACTION",
+      "startNs": 12441614253464,
+      "endNs": 12471614253464
+    }
+  ],
+  "summaries": {
+    "BASELINE": {
+      "scheduledCount": 810,
+      "successCount": 810,
+      "errorCount": 0,
+      "timeoutCount": 0,
+      "skippedCount": 0,
+      "missedDispatchCount": 0,
+      "deadlineMissCount": 0,
+      "p50Ms": {
+        "value": 23.359919,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:BASELINE",
+        "timestamp": 1791125465585153765,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "p95Ms": {
+        "value": 24.722878,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:BASELINE",
+        "timestamp": 1791125465585312725,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "p99Ms": {
+        "value": 28.483428,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:BASELINE",
+        "timestamp": 1791125465585460160,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "dispatchDelayP95Ms": {
+        "value": 2.16568,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:BASELINE",
+        "timestamp": 1791125465585617094,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "offeredRateHz": {
+        "value": 27.0,
+        "unit": "requests/s",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:BASELINE",
+        "timestamp": 1791125465585619958,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "completedRateHz": {
+        "value": 27.0,
+        "unit": "successful cohort requests/s",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:BASELINE",
+        "timestamp": 1791125465585623310,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "errorRate": {
+        "value": 0.0,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:BASELINE",
+        "timestamp": 1791125465585626104,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "deadlineMissRate": {
+        "value": 0.0,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:BASELINE",
+        "timestamp": 1791125465585628967,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 30.0,
+        "availability": "AVAILABLE",
+        "reason": null
+      }
+    },
+    "CONTENTION": {
+      "scheduledCount": 331,
+      "successCount": 174,
+      "errorCount": 13,
+      "timeoutCount": 6,
+      "skippedCount": 144,
+      "missedDispatchCount": 0,
+      "deadlineMissCount": 168,
+      "p50Ms": {
+        "value": 447.95492,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586251745,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.343363249,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "p95Ms": {
+        "value": 541.624094,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586269345,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.343363249,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "p99Ms": {
+        "value": 1469.909426,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586284501,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.343363249,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "dispatchDelayP95Ms": {
+        "value": 1.752827,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586312856,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.343363249,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "offeredRateHz": {
+        "value": 26.81603006593977,
+        "unit": "requests/s",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586315720,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.343363249,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "completedRateHz": {
+        "value": 14.096644203847493,
+        "unit": "successful cohort requests/s",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586319072,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.343363249,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "errorRate": {
+        "value": 0.03927492447129909,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586322006,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.343363249,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "deadlineMissRate": {
+        "value": 0.5075528700906344,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586324380,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.343363249,
+        "availability": "AVAILABLE",
+        "reason": null
+      }
+    },
+    "AFTER_ACTION": {
+      "scheduledCount": 0,
+      "successCount": 0,
+      "errorCount": 0,
+      "timeoutCount": 0,
+      "skippedCount": 0,
+      "missedDispatchCount": 0,
+      "deadlineMissCount": 0,
+      "p50Ms": {
+        "value": null,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+        "timestamp": 1791125465586460222,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "p95Ms": {
+        "value": null,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+        "timestamp": 1791125465586463505,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "FEWER_THAN_20_SUCCESSES"
+      },
+      "p99Ms": {
+        "value": null,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+        "timestamp": 1791125465586466438,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "FEWER_THAN_100_SUCCESSES"
+      },
+      "dispatchDelayP95Ms": {
+        "value": null,
+        "unit": "ms",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+        "timestamp": 1791125465586468813,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "offeredRateHz": {
+        "value": null,
+        "unit": "requests/s",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+        "timestamp": 1791125465586471676,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "completedRateHz": {
+        "value": null,
+        "unit": "successful cohort requests/s",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+        "timestamp": 1791125465586474540,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "errorRate": {
+        "value": null,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+        "timestamp": 1791125465586476914,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      },
+      "deadlineMissRate": {
+        "value": null,
+        "unit": "fraction of scheduled",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+        "timestamp": 1791125465586479359,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 0,
+        "availability": "UNAVAILABLE",
+        "reason": "NO_OBSERVATIONS"
+      }
+    }
+  },
+  "workers": [
+    {
+      "role": "BACKGROUND_1",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 76699,
+        "startTicks": 1240962
+      },
+      "alive": false,
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76699,
+          "startTicks": 1240962
+        },
+        "uid": 1000,
+        "parentPid": 76609,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          11
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-644 nice 0"
+      },
+      "lastVerifiedNs": 12423774915147,
+      "progress": {
+        "event": "worker_progress",
+        "kind": "MEASURED",
+        "monotonicNs": 12423906394607,
+        "timestamp": 1791125465532331099,
+        "hashes": 4242432,
+        "hashBudget": 164670288,
+        "cpuNs": 4731237767,
+        "elapsedNs": 14200088902,
+        "digest": "d0ae6466487ffd3e655b262c17e27205ecb8ad028eca4d0da617502564eb1e01"
+      },
+      "hashesPerSecond": {
+        "value": 297971.69226001366,
+        "unit": "hashes/s",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586505060,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.189506904,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "hashesByPhase": {
+        "CONTENTION": {
+          "value": 297971.69226001366,
+          "unit": "hashes/s",
+          "kind": "DERIVED",
+          "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+          "timestamp": 1791125465586505060,
+          "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+          "windowSeconds": 12.189506904,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "AFTER_ACTION": {
+          "value": null,
+          "unit": "hashes/s",
+          "kind": "DERIVED",
+          "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+          "timestamp": 1791125465586514279,
+          "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+          "windowSeconds": 0,
+          "availability": "UNAVAILABLE",
+          "reason": "NEEDS_TWO_PROGRESS_EVENTS"
+        }
+      }
+    },
+    {
+      "role": "BACKGROUND_2",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 76700,
+        "startTicks": 1240962
+      },
+      "alive": false,
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76700,
+          "startTicks": 1240962
+        },
+        "uid": 1000,
+        "parentPid": 76609,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          11
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-644 nice 0"
+      },
+      "lastVerifiedNs": 12423774918430,
+      "progress": {
+        "event": "worker_progress",
+        "kind": "MEASURED",
+        "monotonicNs": 12423909162778,
+        "timestamp": 1791125465535099271,
+        "hashes": 4206592,
+        "hashBudget": 164670288,
+        "cpuNs": 4731160146,
+        "elapsedNs": 14196644803,
+        "digest": "ce19d014a59b6e90f221543fe6b7e2deb33d72e601b828cb052937f28a7e5c06"
+      },
+      "hashesPerSecond": {
+        "value": 295544.3351928619,
+        "unit": "hashes/s",
+        "kind": "DERIVED",
+        "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+        "timestamp": 1791125465586538794,
+        "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+        "windowSeconds": 12.182212857,
+        "availability": "AVAILABLE",
+        "reason": null
+      },
+      "hashesByPhase": {
+        "CONTENTION": {
+          "value": 295544.3351928619,
+          "unit": "hashes/s",
+          "kind": "DERIVED",
+          "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:CONTENTION",
+          "timestamp": 1791125465586538794,
+          "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+          "windowSeconds": 12.182212857,
+          "availability": "AVAILABLE",
+          "reason": null
+        },
+        "AFTER_ACTION": {
+          "value": null,
+          "unit": "hashes/s",
+          "kind": "DERIVED",
+          "sourceId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106/events.jsonl:AFTER_ACTION",
+          "timestamp": 1791125465586547384,
+          "sessionId": "e5141bfa-3dfa-4f2a-aac5-9c1438b3d106",
+          "windowSeconds": 0,
+          "availability": "UNAVAILABLE",
+          "reason": "NEEDS_TWO_PROGRESS_EVENTS"
+        }
+      }
+    }
+  ],
+  "contentionCohortVerified": true,
+  "cleanup": {
+    "verified": true,
+    "children": [
+      {
+        "role": "PROTECTED_SERVICE",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76611,
+          "startTicks": 1237185
+        },
+        "exitCode": 0,
+        "alive": false
+      },
+      {
+        "role": "LOAD_CLIENT",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76612,
+          "startTicks": 1237211
+        },
+        "exitCode": 0,
+        "alive": false
+      },
+      {
+        "role": "BACKGROUND_1",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76699,
+          "startTicks": 1240962
+        },
+        "exitCode": 0,
+        "alive": false
+      },
+      {
+        "role": "BACKGROUND_2",
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76700,
+          "startTicks": 1240962
+        },
+        "exitCode": 0,
+        "alive": false
+      }
+    ],
+    "checkedAtNs": 12423953821870
+  },
+  "requestEvidenceCount": 1385,
+  "children": [
+    {
+      "role": "PROTECTED_SERVICE",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 76611,
+        "startTicks": 1237185
+      },
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76611,
+          "startTicks": 1237185
+        },
+        "uid": 1000,
+        "parentPid": 76609,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          11
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-644 nice 0"
+      },
+      "alive": false,
+      "lastVerifiedNs": 12423774912703
+    },
+    {
+      "role": "LOAD_CLIENT",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 76612,
+        "startTicks": 1237211
+      },
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76612,
+          "startTicks": 1237211
+        },
+        "uid": 1000,
+        "parentPid": 76609,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-644 nice 0"
+      },
+      "alive": false,
+      "lastVerifiedNs": 12372202563763
+    },
+    {
+      "role": "BACKGROUND_1",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 76699,
+        "startTicks": 1240962
+      },
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76699,
+          "startTicks": 1240962
+        },
+        "uid": 1000,
+        "parentPid": 76609,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          11
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-644 nice 0"
+      },
+      "alive": false,
+      "lastVerifiedNs": 12423774915147
+    },
+    {
+      "role": "BACKGROUND_2",
+      "identity": {
+        "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+        "pid": 76700,
+        "startTicks": 1240962
+      },
+      "observed": {
+        "identity": {
+          "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+          "pid": 76700,
+          "startTicks": 1240962
+        },
+        "uid": 1000,
+        "parentPid": 76609,
+        "threads": 1,
+        "nice": 0,
+        "allowedCpus": [
+          11
+        ],
+        "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/snap.antigravity.antigravity-1fef3c2d-6bed-450f-b257-48b92914deee.scope",
+        "autogroup": "/autogroup-644 nice 0"
+      },
+      "alive": false,
+      "lastVerifiedNs": 12423774918430
+    }
+  ]
+}

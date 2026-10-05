@@ -1,0 +1,232 @@
+{
+  "milestone": "M5",
+  "timestamp": "2026-10-04T15:06:18Z",
+  "stages": {
+    "environment": {
+      "kernel": "7.0.0-28-generic",
+      "allowedCpus": "0-11",
+      "clockTicks": 100,
+      "storage": "AVAILABLE",
+      "cpuPressureSome": {
+        "value": "some avg10=0.38 avg60=10.46 avg300=14.35 total=259393536",
+        "unit": "kernel PSI some averages (%) and total (us)",
+        "kind": "MEASURED",
+        "sourceId": "/proc/pressure/cpu",
+        "timestamp": "2026-10-04T15:06:17.927243106Z",
+        "sessionId": "be6852b2-57fc-4d9a-8b2c-9c19c0bbee99",
+        "availability": "AVAILABLE",
+        "reason": null,
+        "windowSeconds": null
+      }
+    },
+    "experiment_launch": {
+      "id": "416dd0e3-9520-4293-9e17-66c81545be27",
+      "targetCore": 11,
+      "initialPhase": "STARTING"
+    },
+    "simulation": {
+      "captureId": "f9fbf7a9-1d60-4786-9d7f-ce649e64e5ff",
+      "algorithms": [
+        "FCFS",
+        "ROUND_ROBIN",
+        "PRIORITY",
+        "SJF",
+        "CFS"
+      ],
+      "summary": {
+        "FCFS": {
+          "completed": 1,
+          "meanWaitMs": 13649.57
+        },
+        "ROUND_ROBIN": {
+          "completed": 425,
+          "meanWaitMs": 191.73
+        },
+        "PRIORITY": {
+          "completed": 422,
+          "meanWaitMs": 8684.79
+        },
+        "SJF": {
+          "completed": 425,
+          "meanWaitMs": 7827.5
+        },
+        "CFS": {
+          "completed": 428,
+          "meanWaitMs": 102.85
+        }
+      }
+    },
+    "priority_action": {
+      "targets": [
+        {
+          "pid": 80415,
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 80415,
+            "startTicks": 1337525
+          },
+          "expectedCurrentNice": 0,
+          "requestedNice": 5
+        },
+        {
+          "pid": 80416,
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 80416,
+            "startTicks": 1337525
+          },
+          "expectedCurrentNice": 0,
+          "requestedNice": 5
+        }
+      ],
+      "overallStatus": "SUCCESS",
+      "targetResults": [
+        {
+          "pid": 80415,
+          "role": "BACKGROUND_1",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 80415,
+            "startTicks": 1337525
+          },
+          "originalNice": 0,
+          "requestedNice": 5,
+          "observedNice": 5,
+          "status": "SUCCESS",
+          "reason": null,
+          "timestamp": "2026-10-04T15:07:11.493407793Z"
+        },
+        {
+          "pid": 80416,
+          "role": "BACKGROUND_2",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 80416,
+            "startTicks": 1337525
+          },
+          "originalNice": 0,
+          "requestedNice": 5,
+          "observedNice": 5,
+          "status": "SUCCESS",
+          "reason": null,
+          "timestamp": "2026-10-04T15:07:11.493407793Z"
+        }
+      ]
+    },
+    "comparison": {
+      "status": "VALID",
+      "comparable": true,
+      "invalidReasons": [],
+      "hasAfterAction": true,
+      "baselineP95Ms": 39.060975,
+      "contentionP95Ms": 644.484715,
+      "afterP95Ms": 55.605237,
+      "baselineP99Ms": 44.660051,
+      "contentionP99Ms": 773.939051,
+      "afterP99Ms": 87.469994,
+      "deadlineMissesContention": 89,
+      "deadlineMissesAfter": 0,
+      "workerHashesContention": 513865.1397145032,
+      "workerHashesAfter": 562445.9376609315,
+      "latencyP95ImprovementPercent": 91.37214029971216,
+      "latencyRecoveryPercent": 97.26732519606846,
+      "throughputTradeoffPercent": 9.453997594275252,
+      "deadlineMissReduction": 89,
+      "disclosures": [
+        "Completion-time claims require genuinely completed identical work budgets in matched runs; 30s windows measure sustained throughput and responsiveness.",
+        "Simulated queue wait times from DSA models are strictly separate from measured end-to-end HTTP latency.",
+        "Unchanged or negative improvements reflect true system scheduling behavior under the tested workload and core pinning."
+      ]
+    },
+    "new_experiment_simulation": {
+      "algorithms": [
+        "FCFS",
+        "ROUND_ROBIN",
+        "PRIORITY",
+        "SJF",
+        "CFS"
+      ],
+      "summary": {
+        "FCFS": {
+          "completed": 1,
+          "meanWaitMs": 13865.13
+        },
+        "ROUND_ROBIN": {
+          "completed": 439,
+          "meanWaitMs": 182.71
+        },
+        "PRIORITY": {
+          "completed": 430,
+          "meanWaitMs": 9020.1
+        },
+        "SJF": {
+          "completed": 436,
+          "meanWaitMs": 8295.65
+        },
+        "CFS": {
+          "completed": 440,
+          "meanWaitMs": 98.89
+        }
+      }
+    },
+    "export": {
+      "archiveSizeBytes": 375513,
+      "zipFiles": [
+        "manifest.json",
+        "events.jsonl",
+        "samples.jsonl",
+        "summary.json",
+        "supervisor.json",
+        "collector-affinity.json",
+        "action-audits.json"
+      ]
+    },
+    "cleanup": {
+      "verified": true,
+      "children": [
+        {
+          "role": "PROTECTED_SERVICE",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 80401,
+            "startTicks": 1333733
+          },
+          "exitCode": 0,
+          "alive": false
+        },
+        {
+          "role": "LOAD_CLIENT",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 80402,
+            "startTicks": 1333774
+          },
+          "exitCode": 0,
+          "alive": false
+        },
+        {
+          "role": "BACKGROUND_1",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 80415,
+            "startTicks": 1337525
+          },
+          "exitCode": 0,
+          "alive": false
+        },
+        {
+          "role": "BACKGROUND_2",
+          "identity": {
+            "bootId": "14a10379-e28c-41a3-b407-666eddbe99c4",
+            "pid": 80416,
+            "startTicks": 1337525
+          },
+          "exitCode": 0,
+          "alive": false
+        }
+      ],
+      "checkedAtNs": 13437330337313
+    }
+  },
+  "status": "PASSED"
+}

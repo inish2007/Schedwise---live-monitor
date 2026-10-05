@@ -1,0 +1,92 @@
+{
+  "testedAt": "2026-10-04T12:13:08Z",
+  "kernel": "7.0.0-28-generic",
+  "allowedCpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "clockTicks": 100,
+  "checks": [
+    "API authentication",
+    "origin rejection",
+    "real aggregate CPU",
+    "real PID identities",
+    "fresh snapshots",
+    "SSE disconnect/reconnect",
+    "controlled hashing CPU vs top",
+    "process exit",
+    "SQLite migration and real summary; zero seeded captures"
+  ],
+  "childSamples": [
+    {
+      "sequence": 6,
+      "cpuPercent": 100.40111050609381,
+      "windowSeconds": 1.065725264,
+      "startTicks": 293697
+    },
+    {
+      "sequence": 7,
+      "cpuPercent": 98.36010704033966,
+      "windowSeconds": 1.067505955,
+      "startTicks": 293697
+    },
+    {
+      "sequence": 8,
+      "cpuPercent": 100.40686583296073,
+      "windowSeconds": 1.04574522,
+      "startTicks": 293697
+    },
+    {
+      "sequence": 9,
+      "cpuPercent": 99.34905467305511,
+      "windowSeconds": 1.036748667,
+      "startTicks": 293697
+    },
+    {
+      "sequence": 10,
+      "cpuPercent": 99.85134235769104,
+      "windowSeconds": 1.061578117,
+      "startTicks": 293697
+    }
+  ],
+  "topCpuPercentIntervals": [
+    100.0,
+    97.0,
+    100.0,
+    100.0,
+    100.0
+  ],
+  "comparison": "100% = one logical CPU; independent approximately one-second windows, 35 percentage-point tolerance including child startup/exit",
+  "scope": {
+    "value": "Visible Linux proc scope; host coverage not guaranteed; virtualization not detected or probe unavailable",
+    "unit": "text",
+    "kind": "DERIVED",
+    "sourceId": "environment probes",
+    "timestamp": "2026-10-04T12:12:55.027340175Z",
+    "sessionId": "908221c0-e6c7-4717-b28c-1cd3e540ca33",
+    "availability": "AVAILABLE",
+    "reason": null,
+    "windowSeconds": null
+  },
+  "schedstatAccounting": {
+    "value": "0",
+    "unit": "text",
+    "kind": "MEASURED",
+    "sourceId": "/proc/sys/kernel/sched_schedstats",
+    "timestamp": "2026-10-04T12:12:55.028311957Z",
+    "sessionId": "908221c0-e6c7-4717-b28c-1cd3e540ca33",
+    "availability": "AVAILABLE",
+    "reason": null,
+    "windowSeconds": null
+  }
+}

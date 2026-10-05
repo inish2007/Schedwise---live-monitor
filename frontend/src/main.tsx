@@ -23,10 +23,10 @@ interface TabItem {id:Tab;label:string;title:string;description:string;group:str
 const TABS:TabItem[]=[
   {id:'monitor',label:'Monitor',title:'Live telemetry',description:'Observe machine capacity, CPU pressure and real process activity.',group:'TELEMETRY',number:'01'},
   {id:'experiment',label:'Contention lab',title:'Contention lab',description:'Run a bounded trial. Measure the service and the competing work.',group:'EXPERIMENTATION',number:'02'},
-  {id:'simulation',label:'DSA what-if',title:'Scheduling models',description:'Compare modeled allocations using captured workload inputs.',group:'SIMULATION',number:'03'},
-  {id:'recommendation',label:'Allocation advisor',title:'Allocation advisor',description:'Inspect the evidence. Confirm an exact change to managed workers.',group:'SIMULATION',number:'04'},
+  {id:'simulation',label:'Scheduling models',title:'Scheduling models',description:'Compare modeled allocations using captured workload inputs.',group:'SIMULATION',number:'03'},
+  {id:'recommendation',label:'Allocation advisor',title:'Allocation advisor',description:'Review the workload data and choose whether a priority change is justified.',group:'EXPERIMENTS',number:'04'},
   {id:'results',label:'Results & audit',title:'Results & audit',description:'Compare observed phases and inspect retained trial evidence.',group:'EXPERIMENTATION',number:'05'},
-  {id:'gameshield',label:'Game Shield',title:'Game Shield',description:'Inspect running applications and control the existing shielding policy.',group:'DEFENSE',number:'06'},
+  {id:'gameshield',label:'Game Shield',title:'Game Shield',description:'Inspect running applications and control the existing shielding policy.',group:'APPLICATIONS',number:'06'},
   {id:'environment',label:'System scope',title:'Environment & scope',description:'Know what this Linux environment can measure and control.',group:'SYSTEM',number:'07'}
 ];
 
@@ -51,6 +51,11 @@ function App() {
   const [latest, setLatest] = useState<Latest | null>(null);
   const [cpuHistory, setCpuHistory] = useState<CpuPoint[]>([]);
   const [connection, setConnection] = useState('Disconnected');
+  const [streamingEnabled, setStreamingEnabled] = useState(true);
+  const streamingRef = useRef(true);
+  useEffect(() => {
+    streamingRef.current = streamingEnabled;
+  }, [streamingEnabled]);
   const [error, setError] = useState('');
   const [gap, setGap] = useState('');
   const [clock, setClock] = useState(performance.now());
@@ -93,6 +98,7 @@ function App() {
     const headers = { 'X-CSRF-Token':token };
 
     const ingest = (payload: Latest) => {
+      if (!streamingRef.current) return;
       if (payload.snapshot && accept(last.current, payload.snapshot)) {
         const restarted=last.current&&last.current.sessionId!==payload.snapshot.sessionId;
         last.current = payload.snapshot;
@@ -189,21 +195,39 @@ function App() {
       <a className="skip-link" href="#workspace">Skip to workspace</a>
       <header className="system-header">
         <a className="brand" href="#/monitor" onClick={()=>selectTab('monitor')} aria-label="SchedWise monitor"><span className="brand-mark"><Icon name="monitor"/></span><span>SCHEDWISE<small>KERNEL MONITOR</small></span></a>
-        <div className="header-telemetry"><span className="kernel-chip" title={String(kernel??'Connect to discover kernel')}>LINUX <b>{kernel??'UNKNOWN'}</b></span><span className="clock-chip">CLK_TCK <b>{ticks!=null?`${ticks} Hz`:'—'}</b></span></div>
-        <div className="header-status"><span className={`signal-badge ${live?'live':snap?'stale':''}`}><i aria-hidden="true"/>{live?'STREAM LIVE':snap?'STALE':connection.toUpperCase()}</span><span className="header-age">{age<0?'NO SAMPLE':`${(age/1000).toFixed(1)}s AGE`}</span><button className="session-button" onClick={()=>setAuthEpoch(value=>value+1)} title="Reconnect local session"><Icon name="key"/>{token?'Connected':'Reconnect'}<span className={`session-light ${token&&live?'on':''}`}/></button></div>
+        <div className="header-telemetry"><span className="kernel-chip" title={String(kernel??'Connect to discover kernel')}>[ LINUX <b>{kernel??'—'}</b> ]</span><span className="clock-chip">[ CLK_TCK <b>{ticks!=null?`${ticks}Hz`:'—'}</b> ]</span></div>
+        <div className="header-status">
+          <div className="stream-toggle-control" role="group" aria-label="Live telemetry stream power">
+            <span className="stream-toggle-label">STREAM</span>
+            <button
+              type="button"
+              className={`toggle-switch-btn ${streamingEnabled ? 'is-on' : 'is-off'}`}
+              onClick={() => setStreamingEnabled(prev => !prev)}
+              title={streamingEnabled ? "Pause live telemetry stream to inspect metrics" : "Resume live telemetry stream"}
+              aria-pressed={streamingEnabled}
+            >
+              <span className={`switch-pill ${streamingEnabled ? 'active-on' : ''}`}>ON</span>
+              <span className={`switch-pill ${!streamingEnabled ? 'active-off' : ''}`}>OFF</span>
+            </button>
+          </div>
+          <span className={`signal-badge ${!streamingEnabled ? 'paused' : live ? 'live' : snap ? 'stale' : ''}`}><i aria-hidden="true"/>{!streamingEnabled ? 'STREAM PAUSED' : live ? 'STREAM LIVE' : snap ? 'STALE' : connection.toUpperCase()}</span>
+          <span className="header-age">{age<0?'NO SAMPLE':`${(age/1000).toFixed(1)}s AGE`}</span>
+          <button className="session-button" onClick={()=>setAuthEpoch(value=>value+1)} title="Reconnect local session"><Icon name="key"/>{token?'Connected':'Reconnect'}<span className={`session-light ${token&&live&&streamingEnabled?'on':''}`}/></button>
+        </div>
       </header>
       <aside className="tactical-rail">
-        <div className="rail-heading">WORKSPACE <span>LOCAL</span></div>
+        <div className="rail-heading">WORKSPACE </div>
         <nav className="rail-navigation" aria-label="Workspace modules" role="tablist" aria-orientation={mobile?'horizontal':'vertical'}>
           {primary.map((id,index)=>{const item=TABS.find(t=>t.id===id)!;const selected=tab===id||(id==='experiment'&&experiments.includes(tab));return <button key={id} id={`tab-${id}`} role="tab" aria-selected={selected} aria-controls={id==='experiment'?'experiment-navigation':`panel-${id}`} tabIndex={selected?0:-1} className={`rail-link ${selected?'active':''}`} onClick={()=>selectTab(id)} onKeyDown={e=>keyboard(e,index,primary)}><Icon name={id}/><span className="module-copy">{id==='experiment'?'Experiments':id==='environment'?'System':item.label}</span></button>})}
         </nav>
-        <div className="rail-footer"><span className="rail-node"><i/> LOCAL BACKEND</span><p>Linux scope<br/>Explicit actions · real evidence</p><button className="text-button" onClick={()=>selectTab('environment')}>Inspect capabilities <Icon name="arrow"/></button></div>
+        <div className="rail-footer"><p>Linux process monitoring<br/>Changes require confirmation</p><button className="text-button" onClick={()=>selectTab('environment')}>Inspect capabilities <Icon name="arrow"/></button></div>
       </aside>
       <main id="workspace" className="workspace" tabIndex={-1}>
-        <div className="workspace-heading"><div><div className="eyebrow">WORKSPACE / {activeModule.number} / {activeModule.group}</div><h1>{activeModule.title}</h1><p>{activeModule.description}</p></div><div className="sequence-chip"><span>COLLECTOR SEQUENCE</span><strong>{snap?String(snap.sequence).padStart(6,'0'):'—'}</strong></div></div>
+        <div className="workspace-heading"><div><div className="eyebrow">{activeModule.group}</div><h1>{activeModule.title}</h1><p>{activeModule.description}</p></div><div className="sequence-chip"><span>Samples collected</span><strong>{snap?.sequence ?? 'Unavailable'}</strong></div></div>
+        <p className="sample-metadata"><span className="mobile-sample-count">Samples collected: {snap?.sequence ?? 'Unavailable'} · </span>Last sample: {snap ? new Date(snap.timestamp).toLocaleTimeString() : 'Unavailable'} · {live ? 'Live' : snap ? 'Stale' : 'No sample'} · Kernel: {kernel ?? 'Unavailable'} · CPU: {caps?.sources.cpuModel?.value ?? 'Unavailable'}</p>
         {!token&&<div className="connection-prompt"><Icon name="key"/><div><strong>{connection}</strong><span>Connecting securely to your local backend.</span></div></div>}
         {error&&<p role="alert" className="notice alert-error">{error} <button className="text-button" onClick={()=>setAuthEpoch(value=>value+1)}>Reconnect</button></p>}
-        {experiments.includes(tab)&&<div id="experiment-navigation" className="subtabs" role="tablist" aria-label="Experiment sections">{experiments.map((id,index)=><button key={id} id={`experiment-tab-${id}`} role="tab" aria-selected={tab===id} aria-controls={`panel-${id}`} tabIndex={tab===id?0:-1} onClick={()=>selectTab(id)} onKeyDown={e=>{const next=e.key==='ArrowRight'?(index+1)%4:e.key==='ArrowLeft'?(index+3)%4:e.key==='Home'?0:e.key==='End'?3:-1;if(next>=0){e.preventDefault();selectTab(experiments[next]);document.getElementById(`experiment-tab-${experiments[next]}`)?.focus()}}}>{id==='experiment'?'Lab':id==='simulation'?'Models':id==='recommendation'?'Advisor':'Results'}</button>)}</div>}
+        {experiments.includes(tab)&&<div id="experiment-navigation" className="subtabs" role="tablist" aria-label="Experiment sections">{experiments.map((id,index)=><button key={id} id={`experiment-tab-${id}`} role="tab" aria-selected={tab===id} aria-controls={`panel-${id}`} tabIndex={tab===id?0:-1} onClick={()=>selectTab(id)} onKeyDown={e=>{const next=e.key==='ArrowRight'?(index+1)%4:e.key==='ArrowLeft'?(index+3)%4:e.key==='Home'?0:e.key==='End'?3:-1;if(next>=0){e.preventDefault();selectTab(experiments[next]);document.getElementById(`experiment-tab-${experiments[next]}`)?.focus()}}}>{id==='experiment'?'LAB':id==='simulation'?'MODELS':id==='recommendation'?'ADVISOR':'RESULTS'}</button>)}</div>}
         {gap&&<p className="notice">{gap}</p>}
       {/* Tab Panels */}
       {TABS.filter(item=>visited.includes(item.id)).map(item=><div key={item.id} id={`panel-${item.id}`} role="tabpanel" aria-label={item.title} hidden={tab!==item.id} className="tab-content"><CyberpunkErrorBoundary>
@@ -234,6 +258,7 @@ function App() {
           <RecommendationPanel
             token={token}
             experiment={experiment}
+            latest={latest} live={live}
           />
         )}
 
@@ -261,7 +286,7 @@ function App() {
 
       <footer className="system-footer">
         {snap
-          ? `Session ${snap.sessionId} · sequence ${snap.sequence} · sampled ${snap.timestamp}`
+          ? `Session ${snap.sessionId} · samples collected: ${snap.sequence} · sampled ${snap.timestamp}`
           : 'AWAITING SESSION · No telemetry received'}
       </footer>
       </main>

@@ -1,8 +1,14 @@
 import { spawn } from 'child_process';
-import { mkdirSync, writeFileSync } from 'fs';
+import { mkdirSync, writeFileSync, readFileSync } from 'fs';
 
 const screenshotDir = './docs/browser-evidence';
 mkdirSync(screenshotDir, { recursive: true });
+
+let initialUrl = 'http://localhost:5173/';
+try {
+  const token = readFileSync('data/launch-bootstrap', 'utf8').trim();
+  if (token) initialUrl += '#bootstrap=' + token;
+} catch (e) {}
 
 // Start Chrome headless with remote debugging
 const chrome = spawn('/usr/bin/google-chrome', [
@@ -13,7 +19,7 @@ const chrome = spawn('/usr/bin/google-chrome', [
   '--no-sandbox',
   '--disable-gpu',
   '--window-size=1440,1000',
-  'http://localhost:5173/'
+  initialUrl
 ]);
 
 async function sleep(ms) {
@@ -119,8 +125,22 @@ async function run() {
     await capture(name);
   }
 
-  // 1. Monitor Tab
+  // 1. Monitor Tab (Streaming Live)
   await capture('1-monitor');
+
+  // Test Pause / Resume toggle
+  console.log('\nToggling stream OFF (Pause)...');
+  await send('Runtime.evaluate', {
+    expression: `(() => { const btn = document.querySelector('.toggle-switch-btn'); if (btn) btn.click(); })()`
+  });
+  await sleep(1500);
+  await capture('1-monitor-paused');
+
+  console.log('Toggling stream back ON (Resume)...');
+  await send('Runtime.evaluate', {
+    expression: `(() => { const btn = document.querySelector('.toggle-switch-btn'); if (btn) btn.click(); })()`
+  });
+  await sleep(1500);
 
   // 2. Game Shield Tab
   await clickTab('/gameshield/overview', '2-gameshield-overview');

@@ -87,8 +87,10 @@ public class RecommendationEngine {
         this.json = json;
     }
 
-    public synchronized Recommendation generateForActiveExperiment() {
-        JsonNode exp = experimentManager.latest();
+    public synchronized Recommendation generateForActiveExperiment() { return generateForExperiment(null); }
+
+    public synchronized Recommendation generateForExperiment(String experimentId) {
+        JsonNode exp = experimentId == null ? experimentManager.latest() : experimentManager.get(experimentId);
         if (exp == null || exp.isNull()) {
             return emptyRecommendation("No active experiment found. Run an experiment or select a captured session.");
         }
@@ -116,6 +118,7 @@ public class RecommendationEngine {
     }
 
     public synchronized Recommendation generateForCapture(String captureId) {
+        if(captureId==null||!captureId.matches("[a-f0-9-]{36}")) throw new IllegalArgumentException("Invalid capture ID");
         Path root = Path.of(System.getProperty("schedwise.data", "../data")).toAbsolutePath().resolve("experiments").resolve(captureId);
         if (!Files.isRegularFile(root.resolve("summary.json"))) {
             return emptyRecommendation("Capture summary.json not found for " + captureId);
@@ -145,8 +148,7 @@ public class RecommendationEngine {
                     restorationWarning(),
                     true
             );
-            recommendations.put(rec.id(), rec);
-            latest = rec;
+            remember(rec);
             return rec;
         }
 
@@ -162,7 +164,8 @@ public class RecommendationEngine {
                 if (eligible && w.path("role").asText().startsWith("BACKGROUND")) {
                     JsonNode idNode = w.path("identity");
                     Identity id = new Identity(idNode.path("bootId").asText(), idNode.path("pid").asLong(), idNode.path("startTicks").asLong());
-                    int nice = w.path("observed").path("nice").asInt(0);
+                    if(!w.path("observed").path("nice").isInt()) continue;
+                    int nice = w.path("observed").path("nice").asInt();
                     targetWorkers.add(new TargetWorker(id.pid(), w.path("role").asText(), id, nice));
                 }
             }
@@ -177,7 +180,8 @@ public class RecommendationEngine {
                     if (eligible && c.path("role").asText().startsWith("BACKGROUND")) {
                         JsonNode idNode = c.path("identity");
                         Identity id = new Identity(idNode.path("bootId").asText(), idNode.path("pid").asLong(), idNode.path("startTicks").asLong());
-                        int nice = c.path("observed").path("nice").asInt(0);
+                        if(!c.path("observed").path("nice").isInt()) continue;
+                        int nice = c.path("observed").path("nice").asInt();
                         targetWorkers.add(new TargetWorker(id.pid(), c.path("role").asText(), id, nice));
                     }
                 }
@@ -185,7 +189,7 @@ public class RecommendationEngine {
         }
 
         if (targetWorkers.isEmpty()) {
-            return new Recommendation(
+            return remember(new Recommendation(
                     UUID.randomUUID().toString(),
                     expId,
                     Instant.now().toString(),
@@ -197,12 +201,12 @@ public class RecommendationEngine {
                     commonReferenceModelExclusions(),
                     restorationWarning(),
                     true
-            );
+            ));
         }
 
         // Run CFS simulations for candidates if capture events exist
-        CandidateScenario c5 = evaluateCandidate(expId, summary, targetWorkers, 5, "Nice +5 (Moderate Priority Reduction)");
-        CandidateScenario c10 = evaluateCandidate(expId, summary, targetWorkers, 10, "Nice +10 (Aggressive Priority Reduction)");
+        CandidateScenario c5 = evaluateCandidate(expId, summary, targetWorkers, 5, "Set worker nice to 5", !isCapture);
+        CandidateScenario c10 = evaluateCandidate(expId, summary, targetWorkers, 10, "Set worker nice to 10", !isCapture);
 
         String recId = UUID.randomUUID().toString();
         Recommendation rec = new Recommendation(
@@ -218,8 +222,7 @@ public class RecommendationEngine {
                 restorationWarning(),
                 true
         );
-        recommendations.put(rec.id(), rec);
-        latest = rec;
+        remember(rec);
         return rec;
     }
 
@@ -228,7 +231,8 @@ public class RecommendationEngine {
             JsonNode summary,
             List<TargetWorker> workers,
             int targetNice,
-            String title
+            String title,
+            boolean liveExperiment
     ) {
         int wTarget = LinuxWeights.niceToWeight(targetNice);
         int wService = LinuxWeights.niceToWeight(0); // 1024
@@ -264,17 +268,11 @@ public class RecommendationEngine {
             }
         } catch (Exception ignored) {}
 
-        String tradeoff = String.format(
-                Locale.US,
-                "Increases protected service CPU share from 33.3%% to %.1f%% (weight %d vs %d). Each background worker drops to %.1f%% share. %s",
-                protectedShare,
-                wService,
-                wTarget,
-                bgShare,
-                simRespP95 != null
-                        ? String.format(Locale.US, "Modeled queue dispatch wait p95 improves to %.2f ms.", simRespP95)
-                        : "Background batch progress will slow down proportionally."
-        );
+        double currentTotal=wService+workers.stream().mapToInt(w->LinuxWeights.niceToWeight(w.currentNice())).sum();
+        String tradeoff = String.format(Locale.US,
+                "Modeled protected share: %.1f%% → %.1f%%. Each background worker receives %.1f%% while all tasks are runnable. Background progress may slow; measure the result.",
+                wService/currentTotal*100,protectedShare,bgShare);
+        boolean eligible=liveExperiment&&workers.stream().allMatch(w->w.currentNice()<targetNice);
 
         return new CandidateScenario(
                 targetNice,
@@ -288,16 +286,16 @@ public class RecommendationEngine {
                 simTurnP50,
                 tradeoff,
                 workers,
-                true,
-                "Managed child background workers verified eligible for unprivileged nice increase."
+                eligible,
+                !liveExperiment ? "Recorded experiment: review only. Start a live experiment to apply a change." : !eligible ? "This candidate does not increase nice for every worker. Evaluate fresh workers." : "Managed background workers; identities and permissions are checked again before applying."
         );
     }
 
-    public Optional<Recommendation> findById(String id) {
+    public synchronized Optional<Recommendation> findById(String id) {
         Recommendation r = recommendations.get(id);
         if (r != null) {
             // Check expiration (60 seconds)
-            if (Instant.now().isAfter(Instant.parse(r.expiresAt()))) {
+            if ("ACTIVE".equals(r.status()) && Instant.now().isAfter(Instant.parse(r.expiresAt()))) {
                 Recommendation expired = new Recommendation(
                         r.id(), r.experimentId(), r.createdAt(), r.expiresAt(),
                         "EXPIRED", r.evidence(), r.candidates(), r.limitations(),
@@ -308,6 +306,38 @@ public class RecommendationEngine {
             return Optional.of(r);
         }
         return Optional.empty();
+    }
+
+
+    private Recommendation remember(Recommendation rec) {
+        if(recommendations.size()>=100) recommendations.values().stream().min(Comparator.comparing(Recommendation::createdAt)).ifPresent(old->recommendations.remove(old.id()));
+        recommendations.put(rec.id(),rec); latest=rec; return rec;
+    }
+
+    public synchronized Recommendation reject(String id) {
+        Recommendation rec=findById(id).orElseThrow(()->new NoSuchElementException("Unknown recommendation"));
+        if("REJECTED".equals(rec.status())) return rec;
+        if("APPLIED".equals(rec.status())||"PARTIALLY_APPLIED".equals(rec.status())) throw new IllegalStateException("This recommendation has already changed worker priorities");
+        Recommendation rejected=withStatus(rec,"REJECTED"); recommendations.put(id,rejected); return rejected;
+    }
+
+    private Recommendation withStatus(Recommendation r,String status) {
+        return new Recommendation(r.id(),r.experimentId(),r.createdAt(),r.expiresAt(),status,r.evidence(),r.candidates(),r.limitations(),r.referenceModelExclusions(),r.restorationNote(),false);
+    }
+
+    public synchronized dev.schedwise.action.LinuxActionAdapter.BatchActionResult apply(String id,String experimentId,
+            List<dev.schedwise.action.LinuxActionAdapter.TargetActionRequest> targets,
+            java.util.function.Supplier<dev.schedwise.action.LinuxActionAdapter.BatchActionResult> operation) {
+        Recommendation rec=findById(id).orElseThrow(()->new NoSuchElementException("Unknown recommendation"));
+        if(!"ACTIVE".equals(rec.status())) throw new IllegalStateException("Recommendation is "+rec.status()+". Evaluate again before applying.");
+        if(!Objects.equals(experimentId,rec.experimentId())) throw new IllegalArgumentException("Experiment does not match recommendation");
+        boolean matches=targets!=null&&rec.candidates().stream().filter(CandidateScenario::eligible).anyMatch(c->
+            targets.size()==c.targetWorkers().size()&&new HashSet<>(targets).size()==targets.size()&&c.targetWorkers().stream().allMatch(w->targets.stream().anyMatch(t->t.pid()==w.pid()&&Objects.equals(t.identity(),w.identity())&&t.expectedCurrentNice()==w.currentNice()&&t.requestedNice()==c.targetNice())));
+        if(!matches) throw new IllegalArgumentException("Targets do not match an eligible recommendation candidate");
+        var result=operation.get();
+        if("SUCCESS".equals(result.overallStatus())) recommendations.put(id,withStatus(rec,"APPLIED"));
+        else if(result.targets().stream().anyMatch(t->"SUCCESS".equals(t.status()))) recommendations.put(id,withStatus(rec,"PARTIALLY_APPLIED"));
+        return result;
     }
 
     public Optional<Recommendation> getLatest() {
@@ -334,18 +364,18 @@ public class RecommendationEngine {
     }
 
     private Recommendation emptyRecommendation(String reason) {
-        return new Recommendation(
+        return remember(new Recommendation(
                 UUID.randomUUID().toString(),
                 "none",
                 Instant.now().toString(),
                 Instant.now().plusSeconds(60).toString(),
                 "INSUFFICIENT_EVIDENCE",
-                new ContentionEvidence("INSUFFICIENT_EVIDENCE", -1, null, null, null, 0, 0.0, 0, null, null, false, reason, List.of(), "No active workload scope."),
+                new ContentionEvidence("INSUFFICIENT_EVIDENCE", -1, null, null, null, null, null, null, null, null, false, reason, List.of(), "No active workload scope."),
                 List.of(),
                 commonLimitations(),
                 commonReferenceModelExclusions(),
                 restorationWarning(),
                 false
-        );
+        ));
     }
 }

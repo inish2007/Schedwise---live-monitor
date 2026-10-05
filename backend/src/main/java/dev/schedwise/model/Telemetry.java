@@ -14,6 +14,6 @@ public final class Telemetry {
  public record Cpu(Value<Double> busyPercent, Value<Double> stealPercent, Value<List<Long>> counters) {}
  public record Snapshot(String sessionId, long sequence, Instant timestamp, String environmentId,
     String availability, String reason, Map<String,Cpu> cpus, List<ProcessSample> processes,
-    Value<String> cpuPressureSome, int omittedProcesses, int unreadableProcesses, double collectionMillis) {}
+    Value<String> cpuPressureSome, Value<String> ioPressureSome, int omittedProcesses, int unreadableProcesses, double collectionMillis) {}
  public record Latest(Snapshot snapshot, long sampleAgeMillis, String storageStatus) {}
 }

@@ -26,6 +26,9 @@ public class RecommendationAndActionApi {
     private final ActionAuditStore auditStore;
     private final ExperimentManager experimentManager;
 
+    private record CompletedAction(ActionNiceRequest request, BatchActionResult result) {}
+    private final Map<String, CompletedAction> completedActions = new LinkedHashMap<>();
+
     public record RoleTagRequest(long pid, Identity identity, String role, String comment) {}
     public record RecommendationRequest(String experimentId, String captureId) {}
     public record ActionNiceRequest(
@@ -74,7 +77,7 @@ public class RecommendationAndActionApi {
         if (req != null && req.captureId() != null && !req.captureId().isBlank()) {
             return ResponseEntity.ok(recommendationEngine.generateForCapture(req.captureId()));
         }
-        return ResponseEntity.ok(recommendationEngine.generateForActiveExperiment());
+        return ResponseEntity.ok(recommendationEngine.generateForExperiment(req == null ? null : req.experimentId()));
     }
 
     @GetMapping("/recommendations/latest")
@@ -91,32 +94,34 @@ public class RecommendationAndActionApi {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PostMapping("/recommendations/{id}/reject")
+    public ResponseEntity<Recommendation> rejectRecommendation(@PathVariable String id) {
+        return ResponseEntity.ok(recommendationEngine.reject(id));
+    }
+
+    @GetMapping("/actions/nice/{id}")
+    public synchronized ResponseEntity<BatchActionResult> getAction(@PathVariable String id) {
+        CompletedAction action = completedActions.get(id);
+        return action == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(action.result());
+    }
+
     @PostMapping("/actions/nice")
-    public ResponseEntity<BatchActionResult> applyNiceAction(@RequestBody ActionNiceRequest req) {
-        if (req.actionId() == null || req.actionId().isBlank()) {
-            return ResponseEntity.badRequest().build();
+    public synchronized ResponseEntity<BatchActionResult> applyNiceAction(@RequestBody ActionNiceRequest req) {
+        if (req.actionId() == null || !req.actionId().matches("[a-f0-9-]{36}"))
+            throw new IllegalArgumentException("A UUID action ID is required");
+        CompletedAction completed = completedActions.get(req.actionId());
+        if (completed != null) {
+            if (!completed.request().equals(req)) throw new IllegalStateException("Action ID already belongs to a different request");
+            return ResponseEntity.ok(completed.result());
         }
-        // Verify recommendation if supplied
-        if (req.recommendationId() != null && !req.recommendationId().isBlank()) {
-            var recOpt = recommendationEngine.findById(req.recommendationId());
-            if (recOpt.isPresent() && "EXPIRED".equals(recOpt.get().status())) {
-                return ResponseEntity.status(409).body(new BatchActionResult(
-                        req.actionId(),
-                        req.experimentId(),
-                        req.recommendationId(),
-                        "REJECTED",
-                        List.of(),
-                        "Recommendation has expired (validity window exceeded). Generate a fresh recommendation.",
-                        java.time.Instant.now().toString()
-                ));
-            }
-        }
-        BatchActionResult result = actionAdapter.applyNice(
-                req.actionId(),
-                req.experimentId(),
-                req.recommendationId(),
-                req.targets()
-        );
+        if (auditStore.findById(req.actionId()).isPresent())
+            throw new IllegalStateException("Action was already attempted. Review its audit and evaluate again.");
+        if (req.recommendationId() == null || req.recommendationId().isBlank())
+            throw new IllegalArgumentException("Recommendation ID is required");
+        BatchActionResult result = recommendationEngine.apply(req.recommendationId(), req.experimentId(), req.targets(),
+                () -> actionAdapter.applyNice(req.actionId(), req.experimentId(), req.recommendationId(), req.targets()));
+        if (completedActions.size() >= 100) completedActions.remove(completedActions.keySet().iterator().next());
+        completedActions.put(req.actionId(), new CompletedAction(req, result));
         return ResponseEntity.ok(result);
     }
 
@@ -129,4 +134,14 @@ public class RecommendationAndActionApi {
     public ResponseEntity<?> resetExperiment(@PathVariable String id) {
         return ResponseEntity.ok(experimentManager.resetWorkers(id));
     }
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<Map<String,String>> missing(Exception e) { return error(404,e); }
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String,String>> invalid(Exception e) { return error(400,e); }
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<Map<String,String>> conflict(Exception e) { return error(409,e); }
+    private ResponseEntity<Map<String,String>> error(int status,Exception e) {
+        return ResponseEntity.status(status).body(Map.of("error",e.getMessage()));
+    }
+
 }

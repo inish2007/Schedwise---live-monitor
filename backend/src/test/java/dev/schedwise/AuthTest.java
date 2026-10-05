@@ -42,8 +42,8 @@ class AuthTest {
    String csrf=new com.fasterxml.jackson.databind.ObjectMapper().readTree(res.getContentAsString()).get("csrfToken").asText();
    var replay=request("POST","/api/session/bootstrap");replay.addHeader("Origin","http://localhost:8080");replay.addHeader("X-Launch-Bootstrap",launch);
    res=new MockHttpServletResponse();auth.doFilter(replay,res,new MockFilterChain());assertEquals(401,res.getStatus());
-   for(boolean valid:new boolean[]{false,true}){
-    var action=request("POST","/api/gameshield/heartbeat");action.addHeader("Origin","http://localhost:8080");action.setCookies(new jakarta.servlet.http.Cookie("schedwise_session",id));if(valid)action.addHeader("X-CSRF-Token",csrf);
+   for(String route:new String[]{"/api/gameshield/heartbeat","/api/recommendations/00000000-0000-0000-0000-000000000001/reject"}) for(boolean valid:new boolean[]{false,true}){
+    var action=request("POST",route);action.addHeader("Origin","http://localhost:8080");action.setCookies(new jakarta.servlet.http.Cookie("schedwise_session",id));if(valid)action.addHeader("X-CSRF-Token",csrf);
     res=new MockHttpServletResponse();var chain=new MockFilterChain();auth.doFilter(action,res,chain);
     if(valid)assertNotNull(chain.getRequest());else assertEquals(403,res.getStatus());
    }

@@ -33,7 +33,7 @@ export function LiveMonitorPanel({ latest, connection, age, live, cpuHistory }: 
 
   return (
     <section className="live-monitor-view panel-root" aria-label="Live system telemetry">
-      {/* 1. Tactical Telemetry HUD Tiles */}
+
       <div className="telemetry-hud-grid">
         <article className={`metric-hud-tile ${machineCpu != null && machineCpu >= 85 ? 'warning' : ''}`}>
           <div className="metric-hud-heading">
@@ -93,7 +93,7 @@ export function LiveMonitorPanel({ latest, connection, age, live, cpuHistory }: 
       <article className="history-card cyber-card" aria-label="Measured-input machine CPU history">
         <div className="card-header">
           <div>
-            <div className="eyebrow">TIME-SERIES TELEMETRY</div>
+            <div className="eyebrow">MACHINE TIME-SERIES</div>
             <h3>Real-Time Machine Activity</h3>
           </div>
           <div className="chart-readout">

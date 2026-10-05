@@ -165,6 +165,7 @@ public class ExperimentManager {
     }
 
     public synchronized JsonNode getComparison(String id) {
+        if(id==null||!id.matches("[a-f0-9-]{36}"))throw new IllegalArgumentException("Invalid experiment ID");
         Run run = runs.get(id);
         JsonNode summaryNode = null;
         if (run != null) {
@@ -181,7 +182,7 @@ public class ExperimentManager {
         if (summaryNode == null) {
             throw new NoSuchElementException("No experiment found for ID: " + id);
         }
-        return ComparabilityChecker.evaluate(summaryNode).toJson(json);
+        return ComparabilityChecker.evaluateRecorded(summaryNode,Path.of(System.getProperty("schedwise.data", "../data")).toAbsolutePath().resolve("experiments").resolve(id),json).toJson(json);
     }
 
     private JsonNode view(Run run) {

@@ -20,6 +20,6 @@ export function Dialog({title,onClose,children,busy=false,drawer=false}:{title:s
   const ref=useRef<HTMLDialogElement>(null);const titleId=useId();
   useEffect(()=>{const node=ref.current;const previous=document.activeElement;node?.showModal();node?.querySelector<HTMLElement>('[autofocus], [data-autofocus]')?.focus();return()=>{node?.close();if(previous instanceof HTMLElement)previous.focus()}},[]);
   return <dialog ref={ref} className={`cyber-dialog ${drawer?'drawer-dialog':''}`} aria-labelledby={titleId} onCancel={e=>{e.preventDefault();if(!busy)onClose()}}>
-    <div className="dialog-heading"><div><div className="eyebrow">SCHEDWISE / CONTROL PANEL</div><h2 id={titleId}>{title}</h2></div><button type="button" className="icon-button" aria-label="Close dialog" disabled={busy} onClick={onClose}><Icon name="close"/></button></div>{children}
+    <div className="dialog-heading"><div><div className="eyebrow">SCHEDWISE CONTROL</div><h2 id={titleId}>{title}</h2></div><button type="button" className="icon-button" aria-label="Close dialog" disabled={busy} onClick={onClose}><Icon name="close"/></button></div>{children}
   </dialog>;
 }

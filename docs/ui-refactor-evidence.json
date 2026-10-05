@@ -1,0 +1,53 @@
+{
+  "testedAt": "2026-10-05T17:39:44.790860+00:00",
+  "browserOrigin": "http://localhost:5173",
+  "experimentId": "454e692b-5f8f-49df-99fc-ab9c9fbc2d98",
+  "kernel": "7.0.0-28-generic",
+  "javaRuntime": "OpenJDK 21",
+  "actionId": "fdb25f4c-4d8c-41ff-8010-1b3f4c73ae33",
+  "actions": [
+    {
+      "targetPid": 125526,
+      "targetRole": "BACKGROUND_2",
+      "originalNice": 0,
+      "requestedNice": 5,
+      "observedNice": 5,
+      "status": "SUCCESS"
+    },
+    {
+      "targetPid": 125525,
+      "targetRole": "BACKGROUND_1",
+      "originalNice": 0,
+      "requestedNice": 5,
+      "observedNice": 5,
+      "status": "SUCCESS"
+    }
+  ],
+  "phaseMetrics": {
+    "BASELINE": {
+      "p95Ms": 37.78985,
+      "scheduledCount": 690,
+      "successCount": 690,
+      "errorCount": 0,
+      "deadlineMissCount": 0
+    },
+    "CONTENTION": {
+      "p95Ms": 529.405027,
+      "scheduledCount": 690,
+      "successCount": 429,
+      "errorCount": 19,
+      "deadlineMissCount": 316
+    },
+    "AFTER_ACTION": {
+      "p95Ms": 500.344544,
+      "scheduledCount": 690,
+      "successCount": 579,
+      "errorCount": 6,
+      "deadlineMissCount": 142
+    }
+  },
+  "cleanupVerified": true,
+  "allChildrenExited": true,
+  "performanceClaim": false,
+  "limitation": "Functional UI/action trial only. Priority changed during AFTER_ACTION; raw phase results are not a matched optimization comparison."
+}

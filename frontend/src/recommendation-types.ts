@@ -27,9 +27,9 @@ export interface ContentionEvidence {
   baselineP95Ms: number | null;
   contentionP95Ms: number | null;
   latencyDegradationRatio: number | null;
-  deadlineMissCount: number;
-  deadlineMissRate: number;
-  errorCount: number;
+  deadlineMissCount: number | null;
+  deadlineMissRate: number | null;
+  errorCount: number | null;
   coreCpuBusyPercent: number | null;
   psiPressureSomeAvg: number | null;
   corroboratedByPressure: boolean;

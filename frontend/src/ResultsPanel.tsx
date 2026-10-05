@@ -36,7 +36,7 @@ export function ResultsPanel({ token, experiment }: Props) {
     const id = selectedCaptureId || experiment?.id;
     setComparison(null);
     if (id && token) void loadComparison(id);
-  }, [token, experiment?.id, experiment?.summaries, selectedCaptureId]);
+  }, [token, experiment?.id, experiment?.revision, experiment?.state, selectedCaptureId]);
 
   async function loadCapturesAndSessions() {
     try {
@@ -142,13 +142,13 @@ export function ResultsPanel({ token, experiment }: Props) {
 
   return (
     <section className="results-view panel-root" aria-label="Measured Validation and Results">
-      {/* 1. Tactical Results Hero Banner (No Double Header) */}
+
       <div className="experiment-hero-banner">
         <div>
           <div className="scope-badge-group">
-            <span className="scope-tag scope-tag-primary">EMPIRICAL VALIDATION</span>
-            <span className="scope-tag">STRICT COMPARABILITY RULES</span>
-            <span className="scope-tag scope-tag-success">UNBIASED REPORTING</span>
+            <span className="scope-tag scope-tag-primary">Measured results</span>
+            <span className="scope-tag">Comparable windows required</span>
+            <span className="scope-tag scope-tag-success">Observed outcomes</span>
           </div>
           <p style={{ margin: '8px 0 0', fontSize: 13, color: 'var(--cyber-text-primary)' }}>
             Compare observed service latency and background throughput across <strong>Baseline</strong>,{' '}
@@ -195,7 +195,7 @@ export function ResultsPanel({ token, experiment }: Props) {
             <div>
               <div className="eyebrow">COMPARABILITY EVALUATION</div>
               <h3 style={{ margin: 0 }}>
-                Protocol Status:{' '}
+                Comparison status:{' '}
                 <span className={`badge ${comparison.comparable ? 'scope-tag-success' : 'alert-warning'}`}>
                   {comparison.status}
                 </span>
@@ -256,9 +256,9 @@ export function ResultsPanel({ token, experiment }: Props) {
             </div>
           ) : (
             <div className="comparability-rejection" style={{ marginTop: 12 }}>
-              <h4 style={{ color: '#ff3366' }}>Direct Performance Comparison Suppressed</h4>
+              <h4 style={{ color: '#ff3366' }}>Comparison unavailable</h4>
               <p className="muted">
-                To prevent false or misleading optimization claims, percentage gain calculations are suppressed:
+                These measurements cannot be compared yet:
               </p>
               <ul>
                 {comparison.invalidReasons.map((r, i) => (
@@ -272,7 +272,7 @@ export function ResultsPanel({ token, experiment }: Props) {
 
           <div style={{ marginTop: 16 }}>
             <details>
-              <summary>Methodological Disclosures & Experimental Constraints</summary>
+              <summary>Measurement limits</summary>
               <ul style={{ paddingLeft: 18, margin: '8px 0', fontSize: 12 }}>
                 {comparison.disclosures.map((d, i) => (
                   <li key={i} className="muted">
@@ -290,7 +290,7 @@ export function ResultsPanel({ token, experiment }: Props) {
         <div className="card-header">
           <div>
             <div className="eyebrow">RAW MEASUREMENTS</div>
-            <h3>Observed Metrics Across Workflow Phases</h3>
+            <h3>Measurements by phase</h3>
           </div>
           <Provenance kind={isLiveExperiment ? 'MEASURED' : 'RECORDED'} />
         </div>
@@ -300,8 +300,8 @@ export function ResultsPanel({ token, experiment }: Props) {
               <tr>
                 <th>Measurement Field</th>
                 <th>Baseline <small>(Service Only)</small></th>
-                <th>Contention <small>(Compete @ Nice 0)</small></th>
-                <th>After Change <small>(Recorded Nice +10)</small></th>
+                <th>Contention <small>(Service + workers)</small></th>
+                <th>After-action phase</th>
               </tr>
             </thead>
             <tbody>

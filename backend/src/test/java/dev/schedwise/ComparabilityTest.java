@@ -131,4 +131,26 @@ public class ComparabilityTest {
         assertEquals("INVALID", report.status());
         assertTrue(report.invalidReasons().stream().anyMatch(r -> r.contains("Offered request rate shifted")));
     }
+    @Test void mixedSettingsInOneWindowSuppressChangePercentages(@org.junit.jupiter.api.io.TempDir java.nio.file.Path directory) throws Exception {
+        var summary=json.createObjectNode().put("state","COMPLETED");
+        var phases=summary.putArray("phases");
+        phases.addObject().put("name","CONTENTION").put("startNs",100).put("endNs",200);
+        phases.addObject().put("name","AFTER_ACTION").put("startNs",200).put("endNs",300);
+        StringBuilder events=new StringBuilder();
+        for(int time:new int[]{110,150,210,250}) {
+            var event=json.createObjectNode().put("event","cohort_verified").put("monotonicNs",time);
+            var members=event.putArray("members");
+            for(int pid=1;pid<=3;pid++) {
+                var member=members.addObject().put("nice",time==250&&pid>1?5:0).put("threads",1).put("cgroup","test");
+                member.putObject("identity").put("pid",pid).put("bootId","test").put("startTicks",1);
+                member.putArray("allowedCpus").add(2);
+            }
+            events.append(json.writeValueAsString(event)).append('\n');
+        }
+        java.nio.file.Files.writeString(directory.resolve("events.jsonl"),events);
+        var result=ComparabilityChecker.evaluateRecorded(summary,directory,json);
+        assertFalse(result.comparable());assertNull(result.latencyP95ImprovementPercent());
+        assertTrue(result.invalidReasons().stream().anyMatch(reason->reason.contains("changed within the AFTER_ACTION")));
+    }
+
 }

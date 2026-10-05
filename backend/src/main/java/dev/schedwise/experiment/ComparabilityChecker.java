@@ -244,6 +244,55 @@ public final class ComparabilityChecker {
         );
     }
 
+    /** Validate observed settings within each measured window before displaying change percentages. */
+    public static ComparabilityReport evaluateRecorded(JsonNode summary, java.nio.file.Path directory, ObjectMapper json) {
+        ComparabilityReport report=evaluate(summary);
+        List<String> reasons=new ArrayList<>(report.invalidReasons());
+        if(!"COMPLETED".equals(summary.path("state").asText())) {
+            reasons.add("The experiment must complete before comparing full measurement windows.");
+        } else {
+            java.util.Map<String,java.util.Set<String>> settings=new java.util.HashMap<>();
+            java.util.Map<String,Integer> counts=new java.util.HashMap<>();
+            try {
+                var file=directory.resolve("events.jsonl");
+                if(!java.nio.file.Files.isRegularFile(file)||java.nio.file.Files.size(file)>32L*1024*1024)
+                    throw new IllegalStateException("Missing or oversized settings journal");
+                try(var reader=java.nio.file.Files.newBufferedReader(file)) {
+                    String line;int lines=0;
+                    while((line=reader.readLine())!=null) {
+                        if(++lines>100000||line.length()>131072)throw new IllegalStateException("Settings journal exceeds read bounds");
+                        if(!line.contains("cohort_verified"))continue;
+                        JsonNode event=json.readTree(line);
+                        if(!"cohort_verified".equals(event.path("event").asText()))continue;
+                        long time=event.path("monotonicNs").asLong(-1);
+                        for(JsonNode phase:summary.path("phases")) {
+                            String name=phase.path("name").asText();
+                            if(!List.of("CONTENTION","AFTER_ACTION").contains(name)||time<phase.path("startNs").asLong()||time>=phase.path("endNs").asLong())continue;
+                            List<String> members=new ArrayList<>();
+                            for(JsonNode member:event.path("members")) {
+                                if(!member.has("identity")||!member.path("nice").isInt())throw new IllegalStateException("Incomplete settings observation");
+                                members.add(member.path("identity").toString()+":"+member.path("nice")+":"+member.path("allowedCpus")+":"+member.path("cgroup")+":"+member.path("threads"));
+                            }
+                            if(members.size()<3)throw new IllegalStateException("Incomplete contention cohort");
+                            java.util.Collections.sort(members);
+                            settings.computeIfAbsent(name,key->new java.util.HashSet<>()).add(String.join("|",members));
+                            counts.merge(name,1,Integer::sum);
+                        }
+                    }
+                }
+                for(String phase:List.of("CONTENTION","AFTER_ACTION")) {
+                    if(counts.getOrDefault(phase,0)<2)reasons.add("Worker settings could not be verified within the "+phase+" window.");
+                    else if(settings.get(phase).size()!=1)reasons.add("Worker priority, identity or CPU grouping changed within the "+phase+" window. Raw measurements remain available; change percentages are withheld.");
+                }
+            } catch(Exception e) {reasons.add("Worker settings journal unavailable; phase comparability cannot be verified.");}
+        }
+        if(reasons.isEmpty())return report;
+        return new ComparabilityReport("INVALID",false,List.copyOf(reasons),report.hasAfterAction(),
+                report.baselineP95Ms(),report.contentionP95Ms(),report.afterP95Ms(),report.baselineP99Ms(),report.contentionP99Ms(),report.afterP99Ms(),
+                report.deadlineMissesContention(),report.deadlineMissesAfter(),report.workerHashesContention(),report.workerHashesAfter(),
+                null,null,null,null,report.disclosures());
+    }
+
     private static Double getDouble(JsonNode node) {
         if (node != null && node.isNumber()) {
             return node.asDouble();

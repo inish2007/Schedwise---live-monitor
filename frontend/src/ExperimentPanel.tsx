@@ -117,16 +117,16 @@ export function ExperimentPanel({
 
   return (
     <section className="experiment panel-root" aria-label="Real contention experiment">
-      {/* 1. Tactical Experiment Hero Banner (No Double Header) */}
+
       <div className="experiment-hero-banner">
         <div>
           <div className="scope-badge-group">
-            <span className="scope-tag scope-tag-primary">PINNED HARDWARE CORE</span>
+            <span className="scope-tag scope-tag-primary">Shared CPU core</span>
             <span className="scope-tag">FROZEN WORKLOAD</span>
-            <span className="scope-tag scope-tag-success">STRICT COMPARABILITY</span>
+            <span className="scope-tag scope-tag-success">Matched measurement windows</span>
           </div>
           <p style={{ margin: '8px 0 0', fontSize: 13, color: 'var(--cyber-text-primary)' }}>
-            One hashing HTTP service and two finite hashing workers share one isolated CPU.
+            One hashing HTTP service and two finite hashing workers share one selected logical CPU.
             Calibration freezes offered load; baseline, contention, and after-change phases record genuine measurements.
           </p>
         </div>
@@ -182,7 +182,7 @@ export function ExperimentPanel({
           disabled={!token || active || busy || !allowedCpus}
           onClick={() => void action('/api/experiments', core === '' ? {} : { core: Number(core) })}
         >
-          Start Full Experiment Run
+          Start experiment
         </button>
         <button
           className="stop"
@@ -263,12 +263,12 @@ export function ExperimentPanel({
         </div>
       )}
 
-      {/* 6. Measured Phase Comparison Matrix Table */}
+      {/* 6. Measurements by phase Table */}
       <div className="cyber-card" style={{ padding: 20, marginBottom: 20 }}>
         <div className="card-header">
           <div>
             <div className="eyebrow">PHASE OBSERVATIONS</div>
-            <h3>Measured Phase Comparison Matrix</h3>
+            <h3>Measurements by phase</h3>
           </div>
           <Provenance kind={experiment?.finished ? 'RECORDED' : 'MEASURED'} />
         </div>

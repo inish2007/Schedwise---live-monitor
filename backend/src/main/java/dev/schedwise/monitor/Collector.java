@@ -71,7 +71,9 @@ public class Collector {
   previous.clear();previous.putAll(next);
   Value<String> psi;
   try{String some=source.read("/proc/pressure/cpu").lines().filter(s->s.startsWith("some ")).findFirst().orElseThrow();psi=v(some,"kernel PSI some averages (%) and total (us)",Kind.MEASURED,"/proc/pressure/cpu",now,null,null);}catch(Exception e){psi=v(null,"PSI some",Kind.MEASURED,"/proc/pressure/cpu",now,null,"MISSING_OR_INACCESSIBLE");}
-  Snapshot s=new Snapshot(caps.sessionId,++sequence,now,caps.environmentId,failure==null?"AVAILABLE":"PARTIAL_OR_UNAVAILABLE",failure,Collections.unmodifiableMap(cpus),List.copyOf(samples),psi,omitted,unreadable,(source.nanoTime()-begin)/1e6);
+  Value<String> io;
+  try{String some=source.read("/proc/pressure/io").lines().filter(line->line.startsWith("some ")).findFirst().orElseThrow();io=v(some,"kernel PSI some averages (%) and total (us)",Kind.MEASURED,"/proc/pressure/io",now,null,null);}catch(Exception e){io=v(null,"PSI some",Kind.MEASURED,"/proc/pressure/io",now,null,"MISSING_OR_INACCESSIBLE");}
+  Snapshot s=new Snapshot(caps.sessionId,++sequence,now,caps.environmentId,failure==null?"AVAILABLE":"PARTIAL_OR_UNAVAILABLE",failure,Collections.unmodifiableMap(cpus),List.copyOf(samples),psi,io,omitted,unreadable,(source.nanoTime()-begin)/1e6);
   synchronized(this){ring.addLast(s);while(ring.size()>120||(!ring.isEmpty()&&ring.peekFirst().timestamp().isBefore(now.minusSeconds(120))))ring.removeFirst();}
   publishedNanos=System.nanoTime();latest=s;
  }

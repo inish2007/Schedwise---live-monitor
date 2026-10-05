@@ -88,12 +88,12 @@ export function SimulationPanel({ token }: { token: string }) {
 
   return (
     <section className="simulation-panel panel-root" aria-label="What-If CPU Scheduling Simulator">
-      {/* 1. Tactical Simulation Hero Banner (No Double Header) */}
+
       <div className="experiment-hero-banner">
         <div>
           <div className="scope-badge-group">
             <span className="scope-tag scope-tag-primary">DISCRETE EVENT SIMULATION</span>
-            <span className="scope-tag">MEASURED-INPUT TRACE DRIVEN</span>
+            <span className="scope-tag">Measured input</span>
             <span className="scope-tag scope-tag-success">5 DSA SCHEDULERS</span>
           </div>
           <p style={{ margin: '8px 0 0', fontSize: 13, color: 'var(--cyber-text-primary)' }}>

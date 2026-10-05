@@ -19,9 +19,9 @@ public class ContentionDetector {
             Double baselineP95Ms,
             Double contentionP95Ms,
             Double latencyDegradationRatio,
-            int deadlineMissCount,
-            double deadlineMissRate,
-            int errorCount,
+            Integer deadlineMissCount,
+            Double deadlineMissRate,
+            Integer errorCount,
             Double coreCpuBusyPercent,
             Double psiPressureSomeAvg,
             boolean corroboratedByPressure,
@@ -86,15 +86,11 @@ public class ContentionDetector {
                 || errorCount > 0;
 
         if (isDegraded) {
-            String explanation = String.format(
-                    Locale.US,
-                    "Sustained contention detected on Core %d: Protected service p95 latency degraded from %.2f ms to %.2f ms (%.1fx degradation) with %d deadline misses under background workload.",
-                    core,
-                    baseP95 != null ? baseP95 : 0.0,
-                    contP95 != null ? contP95 : 0.0,
-                    degradationRatio != null ? degradationRatio : 1.0,
-                    deadlineMisses
-            );
+            String explanation = "Sustained contention detected on Core " + core + ": "
+                    + (baseP95 != null && contP95 != null
+                       ? String.format(Locale.US,"protected service p95 changed from %.2f ms to %.2f ms",baseP95,contP95)
+                       : "p95 latency is unavailable; the assessment uses observed deadline misses and errors")
+                    + ", with " + deadlineMisses + " deadline misses and " + errorCount + " errors during contention.";
             return new ContentionEvidence(
                     "SUSTAINED_CONTENTION",
                     core,
@@ -117,7 +113,7 @@ public class ContentionDetector {
         if (coreBusy != null && coreBusy >= 80.0) {
             String explanation = String.format(
                     Locale.US,
-                    "High CPU utilization (%.1f%%) observed on Core %d, but protected service latency remains within 20%% of baseline (%.2f ms vs %.2f ms) with 0 deadline misses. Contention is not currently harmful.",
+                    "High CPU utilization (%.1f%%) observed on Core %d, but protected service latency remains below the 1.5× degradation threshold (%.2f ms vs %.2f ms) with 0 deadline misses. Contention is not currently harmful.",
                     coreBusy,
                     core,
                     baseP95 != null ? baseP95 : 0.0,
@@ -166,9 +162,9 @@ public class ContentionDetector {
                 null,
                 null,
                 null,
-                0,
-                0.0,
-                0,
+                null,
+                null,
+                null,
                 null,
                 null,
                 false,

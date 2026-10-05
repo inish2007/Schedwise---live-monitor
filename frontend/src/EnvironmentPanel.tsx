@@ -44,7 +44,7 @@ export function EnvironmentPanel({ caps, latest }: Props) {
 
   return (
     <section className="environment-view" aria-label="Environment and System Capabilities">
-      {/* 1. Tactical Scope & Runtime Banner */}
+
       <div className="system-scope-banner">
         <div className="scope-banner-content">
           <div className="scope-badge-group">
@@ -73,7 +73,7 @@ export function EnvironmentPanel({ caps, latest }: Props) {
           <div className="metric-card-value">
             <strong>{val(caps?.sources.kernel)}</strong>
           </div>
-          <small className="metric-card-sub">x86_64 host / VM platform</small>
+          <small className="metric-card-sub">Visible Linux environment</small>
         </article>
 
         <article className="system-metric-card">
@@ -97,7 +97,7 @@ export function EnvironmentPanel({ caps, latest }: Props) {
           <div className="metric-card-value">
             <strong>{latest?.storageStatus ?? caps?.storage ?? 'Available'}</strong>
           </div>
-          <small className="metric-card-sub">SQLite 3.50 WAL persistence</small>
+          <small className="metric-card-sub">SQLite persistence</small>
         </article>
 
         <article className="system-metric-card">
@@ -136,7 +136,7 @@ export function EnvironmentPanel({ caps, latest }: Props) {
 
         <p className="psi-summary-text">
           Measures the proportion of time in which tasks are delayed waiting for CPU compute. SchedWise tracks <code>some</code> stalls;
-          system-level <code>full</code> is omitted because CPU cannot experience full complete stalls without machine failure.
+          system-level <code>full</code> is omitted because system-level CPU full is not a meaningful contention metric.
         </p>
 
         <div className="psi-stats-row">
@@ -176,7 +176,7 @@ export function EnvironmentPanel({ caps, latest }: Props) {
               className={`filter-tab ${sourceCategory === 'all' ? 'active' : ''}`}
               onClick={() => setSourceCategory('all')}
             >
-              All ({allSources.length})
+              All Interfaces ({allSources.length})
             </button>
             <button
               type="button"
@@ -249,7 +249,7 @@ export function EnvironmentPanel({ caps, latest }: Props) {
         </div>
       </article>
 
-      {/* 5. Tactical Limitations & Guardrails Grid */}
+
       <article className="guardrails-section">
         <div className="eyebrow">ARCHITECTURAL GUARDRAILS</div>
         <h3>Documented Platform Limitations</h3>

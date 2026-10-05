@@ -73,7 +73,7 @@ public class SessionAuth extends OncePerRequestFilter {
   if(!req.getMethod().equals("GET")){
    if(origin==null){deny(res,403,"ORIGIN_REQUIRED");return;}
    if(!bearer&&!equal(req.getHeader("X-CSRF-Token"),session.csrf())){deny(res,403,"CSRF_REJECTED");return;}
-   boolean allowed=req.getMethod().equals("POST")&&(Set.of("/api/experiments","/api/simulations","/api/recommendations","/api/actions/nice","/api/roles/tags","/api/gameshield/activate","/api/gameshield/deactivate","/api/gameshield/heartbeat").contains(path)||path.matches("/api/experiments/[a-f0-9-]{36}/(stop|reset)"));
+   boolean allowed=req.getMethod().equals("POST")&&(Set.of("/api/experiments","/api/simulations","/api/recommendations","/api/actions/nice","/api/roles/tags","/api/gameshield/activate","/api/gameshield/deactivate","/api/gameshield/heartbeat").contains(path)||path.matches("/api/recommendations/[a-f0-9-]{36}/reject")||path.matches("/api/experiments/[a-f0-9-]{36}/(stop|reset)"));
    if(!allowed){deny(res,405,"METHOD_REJECTED");return;}
    if(req.getContentLengthLong()>16384){deny(res,413,"REQUEST_TOO_LARGE");return;}
   }

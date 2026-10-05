@@ -243,7 +243,7 @@ export function GameShieldPanel({ token, latest, age }: { token: string; latest:
 
   return (
     <section className="gameshield-panel panel-root" aria-label="Game Shield">
-      {/* 1. Tactical Defense Status Hero Banner (No Double Header) */}
+
       <div className="defense-status-banner">
         <div className="defense-banner-left">
           <div className="defense-tag-cluster">
@@ -265,7 +265,7 @@ export function GameShieldPanel({ token, latest, age }: { token: string; latest:
               <em className="muted">None selected · choose in Applications tab</em>
             )}
             <span className="defense-target-sub">
-              Unprivileged SIGSTOP isolation with independent Python guardian and 60s lease auto-recovery
+              Unprivileged process pausing with independent Python guardian and 60s lease auto-recovery
             </span>
           </p>
         </div>
@@ -343,7 +343,7 @@ export function GameShieldPanel({ token, latest, age }: { token: string; latest:
               }
             }}
           >
-            {key === 'activity' ? 'Activity & Recovery' : key === 'overview' ? 'Overview' : 'Applications'}
+            {key === 'activity' ? 'RECOVERY' : key === 'overview' ? 'OVERVIEW' : 'APPS'}
           </button>
         ))}
       </div>
@@ -393,12 +393,11 @@ export function GameShieldPanel({ token, latest, age }: { token: string; latest:
                 {hasTelemetry ? (
                   isContention ? (
                     <span>
-                      <strong>High Contention Observed:</strong> Background activity may compete with interactive tasks.
+                      <strong>Elevated system load:</strong> Check the selected application and shared CPUs before changing background work.
                     </span>
                   ) : (
                     <span>
-                      <strong>Headroom Available:</strong> Machine CPU utilization is stable. Background tasks are not
-                      saturating core capacity.
+                      <strong>System load below the warning threshold:</strong> A busy individual core can still affect an application.
                     </span>
                   )
                 ) : (
@@ -417,7 +416,7 @@ export function GameShieldPanel({ token, latest, age }: { token: string; latest:
           <article className="shield-overview-card">
             <div>
               <div className="card-header" style={{ marginBottom: 8, paddingBottom: 0, border: 'none' }}>
-                <div className="eyebrow">OPERATIONAL PROTOCOL</div>
+                <div className="eyebrow">PAUSE SETTINGS</div>
                 <Provenance kind="MEASURED" />
               </div>
               <h3>Safe Workload Selection</h3>
@@ -438,25 +437,21 @@ export function GameShieldPanel({ token, latest, age }: { token: string; latest:
           <article className="shield-overview-card">
             <div>
               <div className="card-header" style={{ marginBottom: 8, paddingBottom: 0, border: 'none' }}>
-                <div className="eyebrow">INDEPENDENT SUPERVISOR</div>
+                <div className="eyebrow">RECOVERY SUPERVISOR</div>
                 <span className="badge">{status?.guardianAvailable ? 'AVAILABLE' : 'UNAVAILABLE'}</span>
               </div>
               <h3>Auto-Unpause Guardrails</h3>
               <ul className="trigger-list">
                 <li className="trigger-item">
-                  <span className="trigger-num">01</span>
                   <span>Manual Turn Off click</span>
                 </li>
                 <li className="trigger-item">
-                  <span className="trigger-num">02</span>
                   <span>Protected application termination</span>
                 </li>
                 <li className="trigger-item">
-                  <span className="trigger-num">03</span>
                   <span>Duration timer expiry ({minutes}m default)</span>
                 </li>
                 <li className="trigger-item">
-                  <span className="trigger-num">04</span>
                   <span>Dashboard lease timeout (60s without heartbeat)</span>
                 </li>
               </ul>
@@ -472,7 +467,7 @@ export function GameShieldPanel({ token, latest, age }: { token: string; latest:
           <div className="cyber-card" style={{ padding: 20 }}>
             <div className="card-header">
               <div>
-                <div className="eyebrow">SIGNAL AUDIT</div>
+                <div className="eyebrow">PROCESS ACTIONS</div>
                 <h3>Currently Paused Cohort ({status.affectedProcesses.length})</h3>
               </div>
               <Provenance kind="MEASURED" />
@@ -508,7 +503,7 @@ export function GameShieldPanel({ token, latest, age }: { token: string; latest:
           </div>
         ) : (
           <EmptyState title="No confirmed paused processes">
-            Select a protected application and choose background work in the Applications tab to enable defense.
+            Select a protected application and choose background work in the Applications tab to enable pausing.
           </EmptyState>
         )}
       </div>
@@ -672,7 +667,7 @@ export function GameShieldPanel({ token, latest, age }: { token: string; latest:
         <div className="shield-audit-card">
           <div className="card-header">
             <div>
-              <div className="eyebrow">AUDIT STREAM</div>
+              <div className="eyebrow">ACTION HISTORY</div>
               <h3>Controller Activity & Actions</h3>
             </div>
             <Provenance kind="RECORDED" />

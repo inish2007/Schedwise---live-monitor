@@ -25,6 +25,9 @@ public class Capabilities {
  public Map<String,Value<?>> discover(){
   Map<String,Value<?>> m=new LinkedHashMap<>();
   m.put("kernel",probe("/proc/sys/kernel/osrelease"));
+  String cpuModel=null;
+  try { cpuModel=source.read("/proc/cpuinfo").lines().filter(line->line.matches("(?i)^(model name|hardware|processor)\\s*:.*")).map(line->line.substring(line.indexOf(':')+1).trim()).filter(text->!text.matches("\\d+")&&!text.isEmpty()).findFirst().orElse(null); } catch(Exception ignored) {}
+  m.put("cpuModel",value(cpuModel,"text",Kind.MEASURED,"/proc/cpuinfo",Instant.now(),null,cpuModel==null?"MISSING_OR_INACCESSIBLE":null));
   String kernel=System.getProperty("os.version");
   String scope=kernel.toLowerCase().contains("microsoft")?"WSL Linux scope (WSL version not independently verified)":"Visible Linux proc scope; host coverage not guaranteed";
   try{scope+="; virtualization: "+source.command(BinaryFinder.find("systemd-detect-virt").toString());}catch(Exception e){scope+="; virtualization not detected or probe unavailable";}
